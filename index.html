@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>診察券</title>
+
+  <!-- LIFF SDK -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+  <!-- QRコード -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 300px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="card">
+  <h3>〇〇クリニック</h3>
+  <p id="name">読み込み中...</p>
+  <p id="userId"></p>
+  <canvas id="qrcode"></canvas>
+</div>
+
+<script>
+const LIFF_ID = "2009685891-3LT8yZiY";
+
+async function main() {
+  await liff.init({ liffId: LIFF_ID });
+
+  if (!liff.isLoggedIn()) {
+    liff.login();
+    return;
+  }
+
+  const profile = await liff.getProfile();
+
+  // 仮：患者ID（今はLINEのuserId）
+  const patientId = profile.userId;
+
+  document.getElementById("name").innerText = profile.displayName;
+  document.getElementById("userId").innerText = "ID: " + patientId;
+
+  // QRコード生成
+  QRCode.toCanvas(document.getElementById('qrcode'), patientId);
+}
+
+main();
+</script>
+
+</body>
+</html>
