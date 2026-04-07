@@ -37,6 +37,16 @@
 </div>
 
 <script>
+// 今日の日付情報を取得し変数dTodayに格納する
+var dToday = new Date();
+// 取得した日付情報から年・月・日・曜日を取得する
+var year = dToday.getFullYear();
+var month = dToday.getMonth()+1;
+var day = dToday.getDate();
+var week = dToday.getDay();
+// 曜日データを配列に格納する
+var yobi= new Array("日","月","火","水","木","金","土");
+  
 const LIFF_ID = "2009685891-3LT8yZiY";
 
 async function main() {
@@ -70,7 +80,7 @@ async function main() {
 
   } catch (error) {
     console.error("エラー発生:", error);
-    document.getElementById("name").innerText = "エラーが発生しました";
+    document.getElementById("name").innerText = "エラーが発生しました！　今日の日付は" + year + "年" + month + "月" + day + "日 " + yobi[week] + "曜日";
   }
 }
 
