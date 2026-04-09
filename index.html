@@ -122,11 +122,11 @@
       //const patientId = profile.userId;
   
       document.getElementById("name").innerText = patient.name;
-      document.getElementById("userId").innerText = "ID: " + patient.Id;
+      document.getElementById("userId").innerText = "ID: " + patient.id;
   
       // QRコード生成
       // QRCode.toCanvas(document.getElementById('qrcode'), patientId);
-      QRCode.toCanvas(document.getElementById('qrcode'), patient.Id, {
+      QRCode.toCanvas(document.getElementById('qrcode'), patient.id, {
   		width: 80
       });
   
