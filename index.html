@@ -113,15 +113,20 @@
       const profile = await liff.getProfile();
   
       console.log("プロフィール取得OK", profile);
-  
-      const patientId = profile.userId;
+
+      const patient = {
+        id: "12345",
+        name: profile.displayName
+      };
+      
+      //const patientId = profile.userId;
   
       document.getElementById("name").innerText = profile.displayName;
-      document.getElementById("userId").innerText = "ID: " + patientId;
+      document.getElementById("userId").innerText = "ID: " + patient.Id;
   
       // QRコード生成
       // QRCode.toCanvas(document.getElementById('qrcode'), patientId);
-      QRCode.toCanvas(document.getElementById('qrcode'), patientId, {
+      QRCode.toCanvas(document.getElementById('qrcode'), patient.Id, {
   		width: 80
       });
   
