@@ -126,7 +126,7 @@
   
       // QRコード生成
       // QRCode.toCanvas(document.getElementById('qrcode'), patientId);
-      QRCode.toCanvas(document.getElementById('qrcode'), patient.id);
+      QRCode.toCanvas(document.getElementById('qrcode'), patient.id, {width: 80});
       //QRCode.toCanvas(document.getElementById('qrcode'), patient.id, {
   		//width: 80
       //});
