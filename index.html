@@ -43,8 +43,8 @@
   /* 名前 */
   .name {
     position: absolute;
-    top: 60px;
-    left: 15px;
+    top: 200px;
+    left: 55px;
     font-size: 20px;
     font-weight: bold;
   }
@@ -127,10 +127,7 @@
   
       // QRコード生成
       // QRCode.toCanvas(document.getElementById('qrcode'), patientId);
-      QRCode.toCanvas(document.getElementById('qrcode'), patient.id);
-      //QRCode.toCanvas(document.getElementById('qrcode'), patient.id, {
-  		//width: 80
-      //});
+      QRCode.toCanvas(document.getElementById('qrcode'), patient.id, {width: 60});
   
     } catch (error) {
       console.error("エラー発生:", error);
