@@ -136,11 +136,15 @@
 				// プロフィール取得
 			    const profile = await liff.getProfile();
 			    patient.name = profile.displayName;
+				console.log(profile.displayName);
 			    document.getElementById("patientid").innerText = patient.id;
+				console.log(patient.id);
 			    document.getElementById("name").innerText = patient.name;
+				console.log(patient.name);
 			    document.getElementById("dob").innerText = patient.dob;
+				console.log(patient.dob);
 			    document.getElementById("sex").innerText = patient.sex;
-
+				console.log(patient.sex);
 			    // 初回描画
 			    adjustLayout();
 
