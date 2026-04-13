@@ -74,8 +74,9 @@
       right: 5%;
     }
     .qr canvas {
-      width: 80vw;
-      max-width: 90px;
+      width: 22vw;       /* 画面に応じて変化 */
+      max-width: 100px;  /* 大きくなりすぎ防止 */
+      height: auto;
     }
   </style>
 </head>
@@ -146,7 +147,7 @@
   
       // QRコード生成
       // QRCode.toCanvas(document.getElementById('qrcode'), patientId);
-      QRCode.toCanvas(document.getElementById('qrcode'), patient.id, {width: 80});
+      QRCode.toCanvas(document.getElementById('qrcode'), patient.id, {width: 300});
   
     } catch (error) {
       console.error("エラー発生:", error);
