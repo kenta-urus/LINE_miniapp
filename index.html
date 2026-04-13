@@ -36,37 +36,35 @@
 			}
 
 			/* 位置だけ固定（サイズはJSで） */
-			.userid {
-				  position: absolute;
-				  top: 54%;
-				  left: 20%;
-				  font-weight: bold;
+			.patientid {
+			  position: absolute;
+			  top: 48%;
+			  left: 10%;
+			  font-weight: bold;
 			}
+			
 			.name {
-				  position: absolute;
-				  top: 71%;
-				  left: 25%;
+			  position: absolute;
+			  top: 65%;
+			  left: 10%;
 			}
+			
 			.dob {
-				  position: absolute;
-				  top: 84%;
-				  left: 25%;
+			  position: absolute;
+			  top: 82%;
+			  left: 10%;
 			}
+			
 			.sex {
-				  position: absolute;
-				  top: 84%;
-				  left: 72%;
+			  position: absolute;
+			  top: 82%;
+			  left: 60%;
 			}
+			
 			.qr {
-				  position: absolute;
-				  bottom: 3%;
-				  right: 3%;
-			}
-			.qr canvas {
-				  display: block;
-				  background: white;
-				  padding: 4px;
-				  border-radius: 8px;
+			  position: absolute;
+			  bottom: 5%;
+			  right: 5%;
 			}
 		</style>
 	</head>
@@ -100,22 +98,21 @@
 
 		// ★ カードサイズに応じて全て調整
 		function adjustLayout() {
-			const card = document.querySelector('.card');
-		  	if (!card) return;
-
-		  	const width = card.offsetWidth;
-
-			  // フォントサイズ（カード基準）
-			  document.querySelector('.name').style.fontSize = (width * 0.045) + "px";
-			  document.querySelector('.userid').style.fontSize = (width * 0.035) + "px";
-			  document.querySelector('.dob').style.fontSize = (width * 0.035) + "px";
-			  document.querySelector('.sex').style.fontSize = (width * 0.035) + "px";
-
-		  	// QRサイズ
-		  	const qrSize = width * 0.27;
-			QRCode.toCanvas(document.getElementById('qrcode'), patient.id, {
-				width: qrSize
-			 });
+		  const card = document.querySelector('.card');
+		  const width = card.offsetWidth;
+		
+		  // フォントサイズ（微調整済）
+		  document.querySelector('.userid').style.fontSize = (width * 0.045) + "px";
+		  document.querySelector('.name').style.fontSize = (width * 0.05) + "px";
+		  document.querySelector('.dob').style.fontSize = (width * 0.04) + "px";
+		  document.querySelector('.sex').style.fontSize = (width * 0.04) + "px";
+		
+		  // QRサイズ（少し小さめがバランス良い）
+		  const qrSize = width * 0.22;
+		
+		  QRCode.toCanvas(document.getElementById('qrcode'), patient.id, {
+		    width: qrSize
+		  });
 		}
 
 		async function main() {
