@@ -20,16 +20,20 @@
   
   /* カード */
   .card {
-    width: 100%;
-    max-width: 350px;
+    width: 90vw;          /* ← 画面の90% */
+    max-width: 400px;     /* ← PCで大きくなりすぎ防止 */
     aspect-ratio: 1.586;
-    background-image: url("診察券.jpg");
+  
+    background-image: url("card.png");
     background-size: cover;
+    background-position: center;
+  
     border-radius: 15px;
     overflow: hidden;
     position: relative;
+  
+    margin-top: 20px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    color: black;
   }
   
   /* 病院名 */
