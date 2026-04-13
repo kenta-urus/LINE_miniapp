@@ -20,67 +20,63 @@
   
   /* カード */
   .card {
-    width: 90vw;          /* ← 画面の90% */
-    /*max-width: 400px;*/     /* ← PCで大きくなりすぎ防止 */
-    aspect-ratio: 1.586;
-  
-    background-image: url("診察券.jpg");
-    background-size: cover;
-    background-position: center;
-  
-    border-radius: 15px;
-    overflow: hidden;
-    position: relative;
-  
-    margin-top: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-  
-  /* 病院名 */
-  .hospital {
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    font-size: 14px;
-  }
-  
-  /* ID */
-  .userid {
-    position: absolute;
-    top: 112px;
-    left: 60px;
-    font-size: 18px;
-  }
-  /* 名前 */
-  .name {
-    position: absolute;
-    top: 150px;
-    left: 60px;
-    font-size: 18px;
-    font-weight: bold;
-  }  
-  /* 生年月日 */
-  .dob {
-    position: absolute;
-    top: 181px;
-    left: 70px;
-    font-size: 18px;
-  }  
-  /* 性別 */
-  .sex {
-    position: absolute;
-    top: 180px;
-    left: 250px;
-    font-size: 18px;
-    font-weight: bold;
-  }  
-  
-  /* QR */
-  .qr {
-    position: absolute;
-    bottom: 5px;
-    right: 2px;
-  }
+      width: 90vw;
+      /*max-width: 400px;*/
+      aspect-ratio: 1.586;
+      background-image: url("card.png");
+      background-size: cover;
+      background-position: center;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      margin-top: 20px;
+    }
+    /* 病院名 */
+    .hospital {
+      position: absolute;
+      top: 5%;
+      left: 5%;
+      font-size: 4vw;
+    }
+    /* ID */
+    .userid {
+      position: absolute;
+      top: 35%;
+      left: 5%;
+      font-size: 3.5vw;
+      font-weight: bold;
+    }
+    /* 名前 */
+    .name {
+      position: absolute;
+      top: 55%;
+      left: 5%;
+      font-size: 6vw;
+    }
+     /* 生年月日 */
+      .dob {
+        position: absolute;
+        top: 60%;
+        left: 5%;
+        font-size:  3.5vw;
+      }  
+      /* 性別 */
+      .sex {
+        position: absolute;
+        top: 60%;
+        left: 70%;
+        font-size:  3.5vw;
+      }  
+    /* QR */
+    .qr {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+    }
+    .qr canvas {
+      width: 22vw;
+      max-width: 90px;
+    }
   </style>
 </head>
 
