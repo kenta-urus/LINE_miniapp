@@ -38,15 +38,15 @@
 			/* 位置だけ固定（サイズはJSで） */
 			.patientid {
 			  position: absolute;
-			  top: 48%;
-			  left: 10%;
+			  top: 55%;
+			  left: 20%;
 			  font-weight: bold;
 			}
 			
 			.name {
 			  position: absolute;
-			  top: 65%;
-			  left: 10%;
+			  top: 70%;
+			  left: 20%;
 			}
 			
 			.dob {
@@ -102,7 +102,7 @@
 		  const width = card.offsetWidth;
 		
 		  // フォントサイズ（微調整済）
-		  document.querySelector('.userid').style.fontSize = (width * 0.045) + "px";
+		  document.querySelector('.patientid').style.fontSize = (width * 0.045) + "px";
 		  document.querySelector('.name').style.fontSize = (width * 0.05) + "px";
 		  document.querySelector('.dob').style.fontSize = (width * 0.04) + "px";
 		  document.querySelector('.sex').style.fontSize = (width * 0.04) + "px";
@@ -128,8 +128,8 @@
 
 			    patient.name = profile.displayName;
 
-			    document.getElementById("name").innerText = patient.name;
 			    document.getElementById("userId").innerText = patient.id;
+			    document.getElementById("name").innerText = patient.name;
 			    document.getElementById("dob").innerText = patient.dob;
 			    document.getElementById("sex").innerText = patient.sex;
 
