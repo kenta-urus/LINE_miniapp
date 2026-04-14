@@ -129,6 +129,33 @@
 			      	return;
 			    }
 				console.log("ログイン済み");
+
+				// Google Sheetから取得
+				const profile = await liff.getProfile();
+				// API呼び出し
+				const res = await fetch(
+					"http://127.0.0.1:8000/patient?line_user_id=" +  + profile.userId 
+				);
+
+				//"https://abc123.ngrok.io/patient?line_user_id=" + profile.userId
+
+				console.log("API呼び出しOK");
+				const data = await res.json();
+				console.log("データー取得OK");
+				// データセット
+				console.log(data.patient_id);	// 患者id
+				patient.id = data.patient_id;
+
+				console.log(data.name);			// 患者氏名
+				patient.name = data.name;
+
+				console.log(data.birth_date);	// 生年月日
+				patient.dob = data.birth_date;
+
+				console.log(data.gender);
+				patient.sex = data.gender;
+				
+
 				// プロフィール取得
 			    const profile = await liff.getProfile();
 			    patient.name = profile.displayName;
