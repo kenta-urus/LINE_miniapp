@@ -135,7 +135,7 @@
 				// API呼び出し
 				console.log("LINEのユーザーIDは" + profile.userId);
 				const res = await fetch(
-				  "https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=" + profile.userId
+					`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`
 				);
 
 				//"https://abc123.ngrok.io/patient?line_user_id=" + profile.userId
