@@ -135,10 +135,11 @@
 				// API呼び出し
 				console.log("LINEのユーザーIDは" + profile.userId);
 				const res = await fetch(
-					"https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}"
+					`http://127.0.0.1:8000/patient?line_user_id=${profile.userId}`
 				);
 				// `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`
 				// https://default-armoire-unplanned.ngrok-free.dev
+				// http://127.0.0.1:8000/patient?line_user_id=${profile.userId}
 
 				console.log("API呼び出しOK");
 				const data = await res.json();
