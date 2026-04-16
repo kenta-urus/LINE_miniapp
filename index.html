@@ -134,9 +134,23 @@
 				const profile = await liff.getProfile();
 				// API呼び出し
 				console.log("LINEのユーザーIDは" + profile.userId);
-				const res = await fetch(
-					`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`
-				);
+
+				try {
+				  const res = await fetch(
+				    `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`
+				  );
+				
+				  console.log("status:", res.status);
+				  const data = await res.json();
+				  console.log("data:", data);
+				
+				} catch (err) {
+				  console.error("fetchエラー:", err);
+				}
+
+				//const res = await fetch(
+				//	`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`
+				//);
 				// `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`
 				// https://default-armoire-unplanned.ngrok-free.dev
 				// http://127.0.0.1:8000/patient?line_user_id=${profile.userId}
