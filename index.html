@@ -140,7 +140,9 @@
 				  const res = await fetch(
 				    `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`
 				  );
-				
+				  if (!res.ok) {
+					  throw new Error(`http Error ${res.status}`);
+				  }
 				  console.log("status:", res.status);
 				  const data = await res.json();
 				  console.log("data:", data);
