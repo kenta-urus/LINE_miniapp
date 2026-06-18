@@ -152,10 +152,10 @@
 					console.log("status:", res.status);
 					const data = await res.json();
 					console.log("data:", data);
-					patient.id = data.patient_id;
-					patient.name = data.name;
-					patient.dob = data.birth_date;
-					patient.sex = data.gender;
+					patient.id = data.patient_id;	// 患者ID
+					patient.name = data.name;		// 患者氏名
+					patient.dob = data.birth_date;	// 患者誕生日
+					patient.sex = data.gender;		// 患者性別
 					
 				} catch (err) {
 				  console.error("fetchエラー:", err);
