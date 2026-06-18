@@ -148,14 +148,19 @@
 				  if (!res.ok) {
 					  throw new Error(`http Error ${res.status}`);
 				  }
-				
+
+					console.log("status:", res.status);
+					const data = await res.json();
+					console.log("data:", data);
+					patient.id = data.patient_id;
+					patient.name = data.name;
+					patient.dob = data.birth_date;
+					patient.sex = data.gender;
+					
 				} catch (err) {
 				  console.error("fetchエラー:", err);
 				}
 
-				console.log("status:", res.status);
-				console.log("API呼び出しOK");
-				const data = await res.json();
 				console.log("データー取得OK");
 				// データセット
 				console.log(data.patient_id);	// 患者id
