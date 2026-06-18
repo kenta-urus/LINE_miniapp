@@ -161,21 +161,6 @@
 				  console.error("fetchエラー:", err);
 				}
 
-				console.log("データー取得OK");
-				// データセット
-				console.log(data.patient_id);	// 患者id
-				patient.id = data.patient_id;
-
-				console.log(data.name);			// 患者氏名
-				patient.name = data.name;
-
-				console.log(data.birth_date);	// 生年月日
-				patient.dob = data.birth_date;
-
-				console.log(data.gender);		// 性別
-				patient.sex = data.gender;
-				
-
 				// プロフィール取得
 			    //const profile = await liff.getProfile();
 			    //patient.name = profile.displayName;
