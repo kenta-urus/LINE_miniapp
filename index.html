@@ -143,21 +143,12 @@
 				  if (!res.ok) {
 					  throw new Error(`http Error ${res.status}`);
 				  }
-				  console.log("status:", res.status);
-				  const data = await res.json();
-				  console.log("data:", data);
 				
 				} catch (err) {
 				  console.error("fetchエラー:", err);
 				}
 
-				//const res = await fetch(
-				//	`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`
-				//);
-				// `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`
-				// https://default-armoire-unplanned.ngrok-free.dev
-				// http://127.0.0.1:8000/patient?line_user_id=${profile.userId}
-
+				console.log("status:", res.status);
 				console.log("API呼び出しOK");
 				const data = await res.json();
 				console.log("データー取得OK");
@@ -177,7 +168,7 @@
 
 				// プロフィール取得
 			    //const profile = await liff.getProfile();
-			    patient.name = profile.displayName;
+			    //patient.name = profile.displayName;
 			    document.getElementById("patientid").innerText = patient.id;
 			    document.getElementById("name").innerText = patient.name;
 			    document.getElementById("dob").innerText = patient.dob;
