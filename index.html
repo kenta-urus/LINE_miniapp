@@ -83,7 +83,7 @@
 		  </div>
 		</div>
 
-		<!-- 新規登録 -->
+		<!-- 新規登録ボタン -->
 		<div id="registerArea" style="display:none;">
     		<button onclick="showRegisterForm()">
         		新規登録
@@ -98,8 +98,7 @@
 		    <button onclick="registerPatient()">
         		登録
     		</button>
-
-</div>
+		</div>
 		
 		<script>
 		// 今日の日付情報を取得し変数dTodayに格納する
@@ -122,6 +121,37 @@
 			  sex: ""
 		};
 
+		//----- 登録用フォーム表示 -----//
+		function showRegisterForm(){
+			document.getElementById(
+        	"registerForm"
+    		).style.display = "block";
+		}
+		//----- 登録処理 -------------//
+		async function registerPatient(){
+			const profile = await liff.getProfile();
+			const body = {
+					line_user_id: profile.userId,
+					patient_id: document.getElementById("patientNo").value,
+					name:       document.getElementById("patientName").value,
+					birth_date: document.getElementById("birthDate").value
+    		};
+			const res = await fetch(
+        		"https://xxxx.ngrok-free.app/register",
+        		{method:"POST",
+            	headers:{
+                	"Content-Type":"application/json",
+                	"ngrok-skip-browser-warning":"true"
+            	},
+            	body:JSON.stringify(body)
+        		}
+    		);
+
+    		const data = await res.json();
+			alert("登録完了");
+			location.reload();
+		}
+			
 		// ★ カードサイズに応じて全て調整
 		function adjustLayout() {
 		  const card = document.querySelector('.card');
@@ -161,17 +191,23 @@
 				console.log("LINEのユーザーIDは" + profile.userId);
 
 				try {
-				  const res = await fetch(
-				    `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`,
-					  {
+					const res = await fetch(
+				    	`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`,
+					  	{
 						  headers: {
 							  "ngrok-skip-browser-warning": "true"
 								   }
-					  }
-				  );
-				  if (!res.ok) {
-					  throw new Error(`http Error ${res.status}`);
-				  }
+					  	}
+				  	);
+
+					if(res.status === 404){
+						document.getElementById("registerArea").style.display = "block";
+						return;
+					}
+					
+					if (!res.ok) {
+						throw new Error(`http Error ${res.status}`);
+					}
 
 					console.log("status:", res.status);
 					const data = await res.json();
