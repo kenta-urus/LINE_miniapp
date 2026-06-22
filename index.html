@@ -119,7 +119,10 @@
 		  const qrSize = width * 0.22;
 
 		  // 患者IDをQRコードに変換
+		  console.log("patient : ",patient);
+		  	
 		  // QRCode.toCanvas(document.getElementById('.qrcode'), patientId, { width: qrSize });
+			
 		  try {
 		  	QRCode.toCanvas(
 		        document.getElementById('qrcode'),
