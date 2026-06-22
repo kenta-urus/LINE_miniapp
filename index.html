@@ -13,11 +13,12 @@
 
 		<style>
 			body {
-				  font-family: sans-serif;
-				  display: flex;
-				  justify-content: center;
-				  padding: 20px;
-				  background: #f0f2f5;
+				    font-family: sans-serif;
+				    display: flex;
+				    flex-direction: column;
+				    align-items: center;
+				    padding: 20px;
+				    background: #f0f2f5;
 			}
 
 			/* カード */
@@ -67,6 +68,52 @@
 			  bottom: 2%;
 			  right: 1%;
 			}
+
+			/* 登録ボタン用CSS */
+			/* ボタンエリア */
+			.register-area {
+			    margin-top: 20px;
+			    text-align: center;
+			}
+			/* ボタン */ 
+			.register-btn {
+			    background: #06c755;
+			    color: white;
+			    border: none;
+			    border-radius: 8px;
+			    padding: 12px 24px;
+			    font-size: 16px;
+			    cursor: pointer;
+			}
+
+			/* 登録フォーム用css */
+			.register-form {
+			    display: none;
+			    margin-top: 15px;
+			    width: 90vw;
+			    max-width: 400px;
+			    background: white;
+			    border-radius: 10px;
+			    padding: 15px;
+			    box-sizing: border-box;
+			}			
+			.register-form input {
+			    width: 100%;
+			    margin-bottom: 10px;
+			    padding: 10px;
+			    box-sizing: border-box;
+			    font-size: 16px;
+			}
+			.save-btn {
+			    width: 100%;
+			    background: #0078ff;
+			    color: white;
+			    border: none;
+			    border-radius: 8px;
+			    padding: 12px;
+			    font-size: 16px;
+			}
+			
 		</style>
 	</head>
 
