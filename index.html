@@ -131,20 +131,20 @@
 		</div>
 
 		<!-- 新規登録ボタン -->
-		<div id="registerArea" style="display:none;">
-    		<button onclick="showRegisterForm()">
-        		新規登録
-    		</button>
+		<div id="registerArea" class="register-area" style="display:none;">
+		    <button class="register-btn" onclick="showRegisterForm()">
+		        新規登録
+		    </button>
 		</div>
 
-		<!-- 登録フォーム -->
-		<div id="registerForm" style="display:none;">
-    		<input id="patientNo"   placeholder="診察券番号">
-			<input id="patientName" placeholder="氏名">
-			<input id="birthDate"   type="date">
-		    <button onclick="registerPatient()">
-        		登録
-    		</button>
+		<!-- 新規登録フォーム -->
+		<div id="registerForm" class="register-form">
+			<input id="patientNo" type="text" placeholder="診察券番号">
+		    <input id="patientName" type="text" placeholder="氏名">
+		    <input id="birthDate" type="date">
+		    <button class="save-btn" onclick="registerPatient()">
+		        登録
+			</button >
 		</div>
 		
 		<script>
