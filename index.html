@@ -118,27 +118,9 @@
 
 		  // 患者IDをQRコードに変換
 		  console.log("patient : ",patient);
-		  	
+	      const canvas = document.getElementById('qrcode');
+          QRCode.toCanvas(canvas, String(patientId), { width: qrSize });
 		  // QRCode.toCanvas(document.getElementById('.qrcode'), patient.id, { width: qrSize });
-			
-		  try {
-		  	QRCode.toCanvas(
-		        document.getElementById('qrcode'),
-		        patient.id,
-		        { width: qrSize },
-		        function (error) {
-		            if (error) {
-						console.error("QR生成エラー:", error);
-						//console.log("QR生成エラー:", error);
-		            } else {
-		                console.log("QR生成成功");
-		            }
-        		}
-    		);
-		  }
-		  catch(e){
-    	  	console.error(e);
-		  }
 		}
 
 		async function main() {
