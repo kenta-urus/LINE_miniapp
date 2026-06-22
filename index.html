@@ -72,6 +72,7 @@
 
 	<body>
 
+		<!-- 診察券 -->
 		<div class="card">
 		  <div id="patientid" class="patientid"></div>
 		  <div id="name" class="name">読み込み中...</div>
@@ -82,6 +83,24 @@
 		  </div>
 		</div>
 
+		<!-- 新規登録 -->
+		<div id="registerArea" style="display:none;">
+    		<button onclick="showRegisterForm()">
+        		新規登録
+    		</button>
+		</div>
+
+		<!-- 登録フォーム -->
+		<div id="registerForm" style="display:none;">
+    		<input id="patientNo"   placeholder="診察券番号">
+			<input id="patientName" placeholder="氏名">
+			<input id="birthDate"   type="date">
+		    <button onclick="registerPatient()">
+        		登録
+    		</button>
+
+</div>
+		
 		<script>
 		// 今日の日付情報を取得し変数dTodayに格納する
 		var dToday = new Date();
