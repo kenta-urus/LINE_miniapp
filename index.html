@@ -95,14 +95,14 @@
 			
 		const LIFF_ID = "2009685891-3LT8yZiY";
 		//const LIFF_ID = "2010080873-1rSYl0PJ";
-			
+		/*	
 		let patient = {
 			  id: "12345",
 			  name: "",
 			  dob: "2012年01月20日",
 			  sex: "男"
 		};
-
+        */
 		// ★ カードサイズに応じて全て調整
 		function adjustLayout() {
 		  const card = document.querySelector('.card');
@@ -116,6 +116,23 @@
 		  // QRサイズ（少し小さめがバランス良い）
 		  const qrSize = width * 0.22;
 		  QRCode.toCanvas(document.getElementById('.qrcode'), patient.id, { width: qrSize });
+		  try {
+		  	QRCode.toCanvas(
+		        document.getElementById('qrcode'),
+		        patient.id,
+		        { width: qrSize },
+		        function (error) {
+		            if (error) {
+		                console.error("QR生成エラー:", error);
+		            } else {
+		                console.log("QR生成成功");
+		            }
+        		}
+    		);
+		  }
+		  catch(e){
+    	  	console.error(e);
+		  }
 		}
 
 		async function main() {
