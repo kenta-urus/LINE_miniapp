@@ -102,8 +102,6 @@
 			  dob: "",
 			  sex: ""
 		};
-		let patientId = "";        
-
 
 		// ★ カードサイズに応じて全て調整
 		function adjustLayout() {
@@ -121,12 +119,12 @@
 		  // 患者IDをQRコードに変換
 		  console.log("patient : ",patient);
 		  	
-		  // QRCode.toCanvas(document.getElementById('.qrcode'), patientId, { width: qrSize });
+		  // QRCode.toCanvas(document.getElementById('.qrcode'), patient.id, { width: qrSize });
 			
 		  try {
 		  	QRCode.toCanvas(
 		        document.getElementById('qrcode'),
-		        patientId,
+		        patient.id,
 		        { width: qrSize },
 		        function (error) {
 		            if (error) {
