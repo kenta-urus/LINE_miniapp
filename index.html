@@ -103,6 +103,8 @@
 			  sex: "男"
 		};
         */
+
+		let patientId = "";
 		// ★ カードサイズに応じて全て調整
 		function adjustLayout() {
 		  const card = document.querySelector('.card');
@@ -117,7 +119,7 @@
 		  const qrSize = width * 0.22;
 
 		  // 患者IDをQRコードに変換
-		  // QRCode.toCanvas(document.getElementById('.qrcode'), patient.id, { width: qrSize });
+		  // QRCode.toCanvas(document.getElementById('.qrcode'), patientId, { width: qrSize });
 		  try {
 		  	QRCode.toCanvas(
 		        document.getElementById('qrcode'),
@@ -171,6 +173,8 @@
 					console.log("status:", res.status);
 					const data = await res.json();
 					console.log("data:", data);
+
+					patientId = data.patient_id
 					patient.id = data.patient_id;	// 患者ID
 					patient.name = data.name;		// 患者氏名
 					patient.dob = data.birth_date;	// 患者誕生日
