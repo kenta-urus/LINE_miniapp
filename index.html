@@ -115,6 +115,8 @@
 		  document.querySelector('.sex').style.fontSize = (width * 0.04) + "px";
 		  // QRサイズ（少し小さめがバランス良い）
 		  const qrSize = width * 0.22;
+
+		  // 患者IDをQRコードに変換
 		  // QRCode.toCanvas(document.getElementById('.qrcode'), patient.id, { width: qrSize });
 		  try {
 		  	QRCode.toCanvas(
