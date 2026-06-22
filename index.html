@@ -175,9 +175,7 @@
 					const data = await res.json();
 					console.log("data:", data);
 
-					patientId = data.patient_id
 					patient.id = data.patient_id;	// 患者ID
-					console.log("patientId:", patientId);
 					console.log("patient.id:", patient.id);
 					patient.name = data.name;		// 患者氏名
 					patient.dob = data.birth_date;	// 患者誕生日
