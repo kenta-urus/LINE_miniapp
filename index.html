@@ -267,9 +267,9 @@
 					const res = await fetch(
 				    	`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`,
 					  	{
-						  headers: {
+						/*  headers: {
 							  "ngrok-skip-browser-warning": "true"
-								   }
+								   } */
 					  	}
 				  	);
 
@@ -304,7 +304,9 @@
 			    document.getElementById("dob").innerText = patient.dob;
 			    document.getElementById("sex").innerText = patient.sex;
 			    // 初回描画
-			    adjustLayout();
+				if(patient.id){
+ 				   adjustLayout();
+				}
 
 		    } catch (error) {
 				console.error("エラー発生:", error);
