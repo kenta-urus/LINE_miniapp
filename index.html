@@ -180,8 +180,11 @@
 		async function registerPatient(){
 
 			console.log("登録開始");
-			
+
+			await liff.init({ liffId: LIFF_ID });
+			await liff.ready;
 			const profile = await liff.getProfile();
+			
 			const body = {
 					line_user_id: profile.userId,
 					patient_id: document.getElementById("patientNo").value,
@@ -193,6 +196,7 @@
 
 			console.log(body);
 			
+			console.log("fetch開始");
 			const res = await fetch(
 				"https://default-armoire-unplanned.ngrok-free.dev/register",
         		{method:"POST",
@@ -203,7 +207,8 @@
             	body:JSON.stringify(body)
         		}
     		);
-
+			console.log("fetch完了");
+			
 			console.log("HTTP Status =", res.status);
 			
     		const data = await res.json();
@@ -236,9 +241,15 @@
 
 		async function main() {
 			try {
+
+				console.log("main開始");
+				
 				// 初期化
 			    await liff.init({ liffId: LIFF_ID });
+				
 				console.log("LIFF init OK");
+				console.log("isLoggedIn=", liff.isLoggedIn());
+				
 				// LINEログイン確認
 			    if (!liff.isLoggedIn()) {
 					console.log("未ログイン → ログインへ");
@@ -305,7 +316,10 @@
 		window.addEventListener('resize', adjustLayout);
 
 		// 初期起動
-		window.onload = main;
+		// window.onload = main;
+		window.addEventListener("load", () => {
+   			 main();
+		});
 		</script>
 
 	</body>
