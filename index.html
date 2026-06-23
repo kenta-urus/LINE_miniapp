@@ -141,7 +141,9 @@
 		<div id="registerForm" class="register-form">
 			<input id="patientNo" type="text" placeholder="診察券番号">
 		    <input id="patientName" type="text" placeholder="氏名">
-		    <input id="birthDate" type="date">
+			<input id="patientKana" type="text" placeholder="かな">
+			<input id="patientsex" type="text" placeholder="生物学的性別">
+			<input id="birthDate" type="date">
 		    <button class="save-btn" onclick="registerPatient()">
 		        登録
 			</button >
@@ -181,6 +183,8 @@
 					line_user_id: profile.userId,
 					patient_id: document.getElementById("patientNo").value,
 					name:       document.getElementById("patientName").value,
+					name_kana:  document.getElementById("patientKana").value,
+					gender:     document.getElementById("patientsex").value,
 					birth_date: document.getElementById("birthDate").value
     		};
 			const res = await fetch(
