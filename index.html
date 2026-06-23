@@ -178,6 +178,9 @@
 		}
 		//----- 登録処理 -------------//
 		async function registerPatient(){
+
+			console.log("登録開始");
+			
 			const profile = await liff.getProfile();
 			const body = {
 					line_user_id: profile.userId,
@@ -187,6 +190,9 @@
 					gender:     document.getElementById("patientsex").value,
 					birth_date: document.getElementById("birthDate").value
     		};
+
+			console.log(body);
+			
 			const res = await fetch(
 				"https://default-armoire-unplanned.ngrok-free.dev/register",
         		{method:"POST",
@@ -198,7 +204,12 @@
         		}
     		);
 
+			console.log("HTTP Status =", res.status);
+			
     		const data = await res.json();
+
+			console.log(data);
+			
 			alert("登録完了");
 			location.reload();
 		}
