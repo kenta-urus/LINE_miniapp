@@ -150,165 +150,160 @@
 		</div>
 		
 		<script>
-
-		//----------------------------------------//
-		// ページ内の全リソース読み込み完了時のログ
-		//----------------------------------------//
-		window.onload = function() {
-    		console.log("Version 2026-06-24 01:00");
-		}
-
-		//========================================//
-		// グローバル定義
-		//========================================//	
-		// 今日の日付情報を取得し変数dTodayに格納する
-		var dToday = new Date();
-		// 取得した日付情報から年・月・日・曜日を取得する
-		var year = dToday.getFullYear();
-		var month = dToday.getMonth()+1;
-		var day = dToday.getDate();
-		var week = dToday.getDay();
-		// 曜日データを配列に格納する
-		var yobi= new Array("日","月","火","水","木","金","土");
 			
-		const LIFF_ID = "2009685891-3LT8yZiY";
-		//const LIFF_ID = "2010080873-1rSYl0PJ";
-			
-		let patient = {
-			  id: "",
-			  name: "",
-			  dob: "",
-			  sex: ""
-		};
-
-		//----------------------------------------//
-		// 患者登録用フォーム表示（function）
-		//----------------------------------------//
-		function showRegisterForm(){
-			document.getElementById(
-        	"registerForm"
-    		).style.display = "block";
-		}
-
-		//----------------------------------------//
-		// 患者情報 登録処理（function）
-		//----------------------------------------//
-		async function registerPatient(){
-
-			console.log("登録開始");
-
-			await liff.init({ liffId: LIFF_ID });
-			await liff.ready;
-			const profile = await liff.getProfile();
-			
-			const body = {
-					line_user_id: profile.userId,
-					patient_id: document.getElementById("patientNo").value,
-					name:       document.getElementById("patientName").value,
-					name_kana:  document.getElementById("patientKana").value,
-					gender:     document.getElementById("patientsex").value,
-					birth_date: document.getElementById("birthDate").value
-    		};
-
-			console.log(body);
-			console.log("fetch開始");
-			const res = await fetch(
-				"https://default-armoire-unplanned.ngrok-free.dev/register",
-        		{method:"POST",
-            	headers:{
-                	"Content-Type":"application/json",
-                	"ngrok-skip-browser-warning":"true"
-            	},
-            	body:JSON.stringify(body)
-        		}
-    		);
-			console.log("fetch完了");
-			console.log("HTTP Status =", res.status);
-    		const data = await res.json();
-			console.log(data);
-			alert("登録完了");
-			location.reload();
-		}
-
-		//----------------------------------------//
-		// ★ カードサイズに応じて全て調整（function）
-		//----------------------------------------//
-		function adjustLayout() {
-		  const card = document.querySelector('.card');
-		  const width = card.offsetWidth;
-		
-		  // フォントサイズ（微調整済）
-		  document.querySelector('.patientid').style.fontSize = (width * 0.045) + "px";
-		  document.querySelector('.name').style.fontSize = (width * 0.05) + "px";
-		  document.querySelector('.dob').style.fontSize = (width * 0.04) + "px";
-		  document.querySelector('.sex').style.fontSize = (width * 0.04) + "px";
-		  // QRサイズ（少し小さめがバランス良い）
-		  const qrSize = width * 0.22;
-
-		  // 患者IDをQRコードに変換
-		  console.log("patient : ",patient);
-	      const canvas = document.getElementById('qrcode');
-          QRCode.toCanvas(canvas, String(patient.id), { width: qrSize });
-		  // QRCode.toCanvas(document.getElementById('.qrcode'), patient.id, { width: qrSize });
-		}
-
-		//============================================//
-		// スクリプトメイン処理
-		//============================================//
-		async function main() {
-			//try 
-			//{
-
-				console.log("main開始");
-				// 初期化
-			    await liff.init({ liffId: LIFF_ID });
-				console.log("LIFF init OK");
-				console.log("isLoggedIn=", liff.isLoggedIn());
+			//========================================//
+			// グローバル定義
+			//========================================//	
+			// 今日の日付情報を取得し変数dTodayに格納する
+			var dToday = new Date();
+			// 取得した日付情報から年・月・日・曜日を取得する
+			var year = dToday.getFullYear();
+			var month = dToday.getMonth()+1;
+			var day = dToday.getDate();
+			var week = dToday.getDay();
+			// 曜日データを配列に格納する
+			var yobi= new Array("日","月","火","水","木","金","土");
 				
-				// LINEログイン確認
-			    if (!liff.isLoggedIn()) {
-					console.log("未ログイン → ログインへ");
-			      	liff.login();
-			      	return;
-			    }
-				console.log("ログイン済み");
-
-				// Google Sheetから取得
+			const LIFF_ID = "2009685891-3LT8yZiY";
+			//const LIFF_ID = "2010080873-1rSYl0PJ";
+				
+			let patient = {
+				  id: "",
+				  name: "",
+				  dob: "",
+				  sex: ""
+			};
+	
+			//----------------------------------------//
+			// 患者登録用フォーム表示（function）
+			//----------------------------------------//
+			function showRegisterForm(){
+				document.getElementById(
+	        	"registerForm"
+	    		).style.display = "block";
+			}
+	
+			//----------------------------------------//
+			// 患者情報 登録処理（function）
+			//----------------------------------------//
+			async function registerPatient(){
+	
+				console.log("登録開始");
+	
+				await liff.init({ liffId: LIFF_ID });
+				await liff.ready;
 				const profile = await liff.getProfile();
-				// API呼び出し
-				console.log("LINEのユーザーIDは" + profile.userId);
-
-				//********** デバッグロジック START **********//
-				try
-				{
-
-				    console.log("fetch開始");
 				
-				    const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
-				    const res = await fetch(url);
-				
-				    console.log("fetch成功");
-				    console.log("status=", res.status);
-				
-				    const text = await res.text();
-				    console.log("body=", text);
+				const body = {
+						line_user_id: profile.userId,
+						patient_id: document.getElementById("patientNo").value,
+						name:       document.getElementById("patientName").value,
+						name_kana:  document.getElementById("patientKana").value,
+						gender:     document.getElementById("patientsex").value,
+						birth_date: document.getElementById("birthDate").value
+	    		};
+	
+				console.log(body);
+				console.log("fetch開始");
+				const res = await fetch(
+					"https://default-armoire-unplanned.ngrok-free.dev/register",
+	        		{method:"POST",
+	            	headers:{
+	                	"Content-Type":"application/json",
+	                	"ngrok-skip-browser-warning":"true"
+	            	},
+	            	body:JSON.stringify(body)
+	        		}
+	    		);
+				console.log("fetch完了");
+				console.log("HTTP Status =", res.status);
+	    		const data = await res.json();
+				console.log(data);
+				alert("登録完了");
+				location.reload();
+			}
+	
+			//----------------------------------------//
+			// ★ カードサイズに応じて全て調整（function）
+			//----------------------------------------//
+			function adjustLayout() {
+			  const card = document.querySelector('.card');
+			  const width = card.offsetWidth;
 			
-				} 
-				catch(err)
-				{
-				    console.error("fetch失敗");
-				    console.error(err);
-				}
-			//********** デバッグロジック END **********//
-			//}
-
+			  // フォントサイズ（微調整済）
+			  document.querySelector('.patientid').style.fontSize = (width * 0.045) + "px";
+			  document.querySelector('.name').style.fontSize = (width * 0.05) + "px";
+			  document.querySelector('.dob').style.fontSize = (width * 0.04) + "px";
+			  document.querySelector('.sex').style.fontSize = (width * 0.04) + "px";
+			  // QRサイズ（少し小さめがバランス良い）
+			  const qrSize = width * 0.22;
+	
+			  // 患者IDをQRコードに変換
+			  console.log("patient : ",patient);
+		      const canvas = document.getElementById('qrcode');
+	          QRCode.toCanvas(canvas, String(patient.id), { width: qrSize });
+			  // QRCode.toCanvas(document.getElementById('.qrcode'), patient.id, { width: qrSize });
+			}
+	
+			//============================================//
+			// スクリプトメイン処理
+			//============================================//
+			async function main() {
+				//try 
+				//{
+	
+					console.log("main開始");
+					// 初期化
+				    await liff.init({ liffId: LIFF_ID });
+					console.log("LIFF init OK");
+					console.log("isLoggedIn=", liff.isLoggedIn());
+					
+					// LINEログイン確認
+				    if (!liff.isLoggedIn()) {
+						console.log("未ログイン → ログインへ");
+				      	liff.login();
+				      	return;
+				    }
+					console.log("ログイン済み");
+	
+					// Google Sheetから取得
+					const profile = await liff.getProfile();
+					// API呼び出し
+					console.log("LINEのユーザーIDは" + profile.userId);
+	
+					//********** デバッグロジック START **********//
+					try
+					{
+	
+					    console.log("fetch開始");
+					
+					    const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
+					    const res = await fetch(url);
+					
+					    console.log("fetch成功");
+					    console.log("status=", res.status);
+					
+					    const text = await res.text();
+					    console.log("body=", text);
+				
+					} 
+					catch(err)
+					{
+					    console.error("fetch失敗");
+					    console.error(err);
+					}
+				//********** デバッグロジック END **********//
+				//}
+			}
+			
 			// リサイズ対応（超重要）
 			window.addEventListener('resize', adjustLayout);
-	
 			// 初期起動
-			// window.onload = main;
-			window.addEventListener("load", () => { main(); });
-		}
+			window.addEventListener("load", () => {
+    			console.log("Version 2026-06-24 01:00");
+    			main();
+			});
+
 		</script>
 
 	</body>
