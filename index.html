@@ -269,6 +269,14 @@
 				console.log("LINEのユーザーIDは" + profile.userId);
 
 				try {
+
+					console.log("fetch開始");
+					const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
+					console.log(url);
+					const res = await fetch(url);
+					console.log("fetch完了");
+					console.log(res);
+					
 					/*const res = await fetch(
 				    	`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`,
 					  	{
@@ -277,7 +285,7 @@
 								   }
 					  	}
 				  	);*/
-					const res = await fetch(`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`);
+					//const res = await fetch(`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`);
 
 					if(res.status === 404){
 						document.getElementById("registerArea").style.display = "block";
