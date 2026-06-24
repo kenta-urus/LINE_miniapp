@@ -275,7 +275,8 @@
 						console.log("fetch開始");
 						const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
 						console.log(url);
-						const res = await fetch(url);
+						//const res = await fetch(url);
+						const res = await fetch(url, {method: "GET", headers: {"Content-Type": "application/json"}});
 						console.log("fetch完了");
 						console.log(res);
 						
