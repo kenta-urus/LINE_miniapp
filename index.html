@@ -261,7 +261,8 @@
 		// スクリプトメイン処理
 		//============================================//
 		async function main() {
-			try {
+			try 
+			{
 
 				console.log("main開始");
 				// 初期化
@@ -283,7 +284,8 @@
 				console.log("LINEのユーザーIDは" + profile.userId);
 
 				//********** デバッグロジック START **********//
-				try {
+				try
+				{
 
 				    console.log("fetch開始");
 				
@@ -296,11 +298,11 @@
 				    const text = await res.text();
 				    console.log("body=", text);
 			
-				} catch(err) {
-			
+				} 
+				catch(err)
+				{
 				    console.error("fetch失敗");
 				    console.error(err);
-			
 				}
 			//********** デバッグロジック END **********//
 			}
