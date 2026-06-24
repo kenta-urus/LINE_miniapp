@@ -248,10 +248,8 @@
 			try {
 
 				console.log("main開始");
-				
 				// 初期化
 			    await liff.init({ liffId: LIFF_ID });
-				
 				console.log("LIFF init OK");
 				console.log("isLoggedIn=", liff.isLoggedIn());
 				
@@ -268,38 +266,36 @@
 				// API呼び出し
 				console.log("LINEのユーザーIDは" + profile.userId);
 
-
 				//********** デバッグロジック START **********//
 				try {
 
-			    console.log("fetch開始");
+				    console.log("fetch開始");
+				
+				    const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
+				    const res = await fetch(url);
+				
+				    console.log("fetch成功");
+				    console.log("status=", res.status);
+				
+				    const text = await res.text();
+				    console.log("body=", text);
 			
-			    const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
-			    const res = await fetch(url);
+				} catch(err) {
 			
-			    console.log("fetch成功");
-			    console.log("status=", res.status);
+				    console.error("fetch失敗");
+				    console.error(err);
 			
-			    const text = await res.text();
-			    console.log("body=", text);
-			
-			} catch(err) {
-			
-			    console.error("fetch失敗");
-			    console.error(err);
-			
-			}
+				}
 			//********** デバッグロジック END **********//
+			}
+
+			// リサイズ対応（超重要）
+			window.addEventListener('resize', adjustLayout);
+	
+			// 初期起動
+			// window.onload = main;
+			window.addEventListener("load", () => { main(); });
 		}
-
-		// リサイズ対応（超重要）
-		window.addEventListener('resize', adjustLayout);
-
-		// 初期起動
-		// window.onload = main;
-		window.addEventListener("load", () => {
-   			 main();
-		});
 		</script>
 
 	</body>
