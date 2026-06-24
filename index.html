@@ -251,7 +251,8 @@
 			async function main() {
 				//try 
 				//{
-	
+					await liff.init()
+					await liff.getProfile() // 必ず待つ
 					console.log("main開始");
 					// 初期化
 				    await liff.init({ liffId: LIFF_ID });
@@ -278,8 +279,8 @@
 					    console.log("fetch開始");
 					
 					    const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
-					    const res = await fetch(url);
-					
+					    const res = fetch(url, {method: "GET", headers: {"Content-Type": "application/json"}});
+
 					    console.log("fetch成功");
 					    console.log("status=", res.status);
 					
