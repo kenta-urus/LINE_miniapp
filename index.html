@@ -249,8 +249,8 @@
 			// スクリプトメイン処理
 			//============================================//
 			async function main() {
-				//try 
-				//{
+				try 
+				{
 
 					console.log("main開始");
 					// 初期化
@@ -270,30 +270,68 @@
 					const profile = await liff.getProfile();
 					// API呼び出し
 					console.log("LINEのユーザーIDは" + profile.userId);
-	
-					//********** デバッグロジック START **********//
-					try
-					{
-	
-					    console.log("fetch開始");
-					
-					    const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
-					    const res = fetch(url, {method: "GET", headers: {"Content-Type": "application/json"}});
+					try {
 
-					    console.log("fetch成功");
-					    console.log("status=", res.status);
+						console.log("fetch開始");
+						const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
+						console.log(url);
+						const res = await fetch(url);
+						console.log("fetch完了");
+						console.log(res);
+						
+						// const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
+						// const res = await fetch(url, {method: "GET", headers: {"Content-Type": "application/json"}});
+						/*const res = await fetch(
+					    	`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`,
+						  	{
+							  headers: {
+								  "ngrok-skip-browser-warning": "true"
+									   }
+						  	}
+					  	);*/
+						//const res = await fetch(`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`);
+	
+						if(res.status === 404){
+							document.getElementById("registerArea").style.display = "block";
+							return;
+						}
+						
+						if (!res.ok) {
+							throw new Error(`http Error ${res.status}`);
+						}
+	
+						console.log("status:", res.status);
+						const data = await res.json();
+						console.log("data:", data);
+	
+						patient.id = data.patient_id;	// 患者ID
+						console.log("patient.id:", patient.id);
+						patient.name = data.name;		// 患者氏名
+						patient.dob = data.birth_date;	// 患者誕生日
+						patient.sex = data.gender;		// 患者性別
 					
-					    const text = await res.text();
-					    console.log("body=", text);
-				
-					} 
-					catch(err)
-					{
-					    console.error("fetch失敗");
-					    console.error(err);
+					} catch (err) {
+					  console.error("fetchエラー:", err);
 					}
-				//********** デバッグロジック END **********//
-				//}
+
+					// プロフィール取得
+				    //const profile = await liff.getProfile();
+				    //patient.name = profile.displayName;
+				    document.getElementById("patientid").innerText = patient.id;
+				    document.getElementById("name").innerText = patient.name;
+				    document.getElementById("dob").innerText = patient.dob;
+				    document.getElementById("sex").innerText = patient.sex;
+				    // 初回描画
+					if(patient.id){
+	 				   adjustLayout();
+					}
+
+		    	} 
+				catch (error)
+				{
+					console.error("エラー発生:", error);
+	      			document.getElementById("name").innerText = "エラーが発生しました！　今日の日付は" + year + "年" + month + "月" + day 
+		    	}
 			}
 			
 			// リサイズ対応（超重要）
