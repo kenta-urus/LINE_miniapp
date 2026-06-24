@@ -264,14 +264,15 @@
 				console.log("LINEのユーザーIDは" + profile.userId);
 
 				try {
-					const res = await fetch(
+					/*const res = await fetch(
 				    	`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`,
 					  	{
 						  headers: {
 							  "ngrok-skip-browser-warning": "true"
 								   }
 					  	}
-				  	);
+				  	);*/
+					const res = await fetch(`https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`);
 
 					if(res.status === 404){
 						document.getElementById("registerArea").style.display = "block";
