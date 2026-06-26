@@ -113,7 +113,34 @@
 			    padding: 12px;
 			    font-size: 16px;
 			}
+
+			/* 下固定メニュースタイル */
+			.bottom-menu {
+				  position: fixed;
+				  bottom: 0;
+				  left: 0;
+				  width: 100%;
+				  height: 60px;
+				  background: #ffffff;
+				  border-top: 1px solid #ccc;
+				  display: flex;
+				  justify-content: space-around;
+				  align-items: center;
+				  z-index: 9999;
+			}
 			
+			.menu-item {
+				  flex: 1;
+				  text-align: center;
+				  font-size: 16px;
+				  padding: 10px 0;
+				  cursor: pointer;
+				  user-select: none;
+			}
+			.menu-item:active {
+			  	background: #f0f0f0;
+			}
+		
 		</style>
 	</head>
 
@@ -148,6 +175,22 @@
 		        登録
 			</button >
 		</div>
+
+		<!-- ▼ 固定メニュー -->
+		<div class="bottom-menu">
+		  <div class="menu-item" onclick="goHome()">
+		    ホーム
+		  </div>
+		  <div class="menu-item" onclick="goRegister()">
+		    登録
+		  </div>
+		  <div class="menu-item" onclick="goHistory()">
+		    履歴
+		  </div>
+		</div>
+		
+
+		
 		
 		<script>
 			
