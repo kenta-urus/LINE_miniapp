@@ -205,15 +205,14 @@
 	
 				console.log(body);
 				console.log("fetch開始");
-				const res = await fetch(
-					"https://default-armoire-unplanned.ngrok-free.dev/register",
-	        		{method:"POST",
-	            	headers:{
-	                	"Content-Type":"application/json",
-	                	"ngrok-skip-browser-warning":"true"
-	            	},
-	            	body:JSON.stringify(body)
-	        		}
+				const url = `https://discounted-skip-unlike-obtain.trycloudflare.com/patient?line_user_id=${profile.userId}`;      // Cloudflare Tunnel 経由
+				const res = await fetch(url, {method:"POST",
+	            			headers:{
+	                			"Content-Type":"application/json",
+	                			"ngrok-skip-browser-warning":"true"
+	            			},
+	            			body:JSON.stringify(body)
+	        			}
 	    		);
 				console.log("fetch完了");
 				console.log("HTTP Status =", res.status);
