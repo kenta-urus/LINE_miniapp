@@ -273,7 +273,9 @@
 					try {
 
 						console.log("fetch開始");
-						const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;
+						//const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;                  ngrok経由
+						const url = `https://coverage-libraries-ruled-politicians.trycloudflare.com/patient?line_user_id=${profile.userId}`;      // Cloudflare Tunnel 経由
+
 						console.log(url);
 						//const res = await fetch(url);
 						const res = await fetch(url, {method: "GET"});
