@@ -1,0 +1,128 @@
+body {
+	    font-family: sans-serif;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    padding: 20px;
+	    background: #f0f2f5;
+}
+
+/* カード */
+.card {
+	  width: 90vw;
+	  max-width: 400px;
+	  aspect-ratio: 1.586;
+	  background-image: url("診察券.jpg");
+	  background-size: cover;
+	  background-position: center;
+	  border-radius: 15px;
+	  overflow: hidden;
+	  position: relative;
+	  margin-top: 20px;
+	  color: black;
+}
+
+/* 位置だけ固定（サイズはJSで） */
+/* 患者ID */
+.patientid {
+  position: absolute;
+  top: 53%;
+  left: 18%;
+  font-weight: bold;
+}
+/* 患者氏名 */
+.name {
+  position: absolute;
+  top: 70%;
+  left: 22%;
+}
+/* 生年月日 */
+.dob {
+  position: absolute;
+  top: 84%;
+  left: 24%;
+}
+/* 性別 */
+.sex {
+  position: absolute;
+  top: 83%;
+  left: 71%;
+}
+/* QR */
+.qr {
+  position: absolute;
+  bottom: 2%;
+  right: 1%;
+}
+
+/* 登録ボタン用CSS */
+/* ボタンエリア */
+.register-area {
+    margin-top: 20px;
+    text-align: center;
+}
+/* ボタン */ 
+.register-btn {
+    background: #06c755;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 登録フォーム用css */
+.register-form {
+    display: none;
+    margin-top: 15px;
+    width: 90vw;
+    max-width: 400px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+}			
+.register-form input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+.save-btn {
+    width: 100%;
+    background: #0078ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+}
+
+/* 下固定メニュースタイル */
+.bottom-menu {
+	  position: fixed;
+	  bottom: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 60px;
+	  background: #ffffff;
+	  border-top: 1px solid #ccc;
+	  display: flex;
+	  justify-content: space-around;
+	  align-items: center;
+	  z-index: 9999;
+}
+
+.menu-item {
+	  flex: 1;
+	  text-align: center;
+	  font-size: 16px;
+	  padding: 10px 0;
+	  cursor: pointer;
+	  user-select: none;
+}
+.menu-item:active {
+  	background: #f0f0f0;
+}
