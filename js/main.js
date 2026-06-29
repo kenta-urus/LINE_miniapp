@@ -5,61 +5,52 @@ async function main() {
     const userId = profile.userId;
 
     // 1. ローカル診察券があるか？
-    const hasLocal = loadLocalCard();  // localStorage から clinic_card_image を読む
+    const hasLocal = loadLocalCard();
 
     if (hasLocal) {
-        // 1. ローカルに診察券画像が存在する → それを表示して終了
+        // ローカル診察券を表示
         showScreen("screen-card");
     } else {
-        // 2. ローカルに存在しない → line_user_id で患者検索
+        // 2. ローカルに無い → FastAPI で検索
         let patientData = null;
         try {
-            patientData = await fetchPatientInfo(userId);  // 200ならJSON、404なら null を返す設計
+            patientData = await fetchPatientInfo(userId);  // /patient
         } catch (e) {
             console.error("APIエラー:", e);
         }
 
         if (patientData) {
-            // 2.1 患者が存在する → 登録情報をもとに診察券画像を作成して保存・表示
-            // ここで「診察券画像を作成する」処理がどこにあるか次第で分岐
-            // 例：FastAPI が card_image を返す場合
+            // 2.1 患者が存在する → 診察券画像を作成して保存
             if (patientData.card_image) {
                 localStorage.setItem("clinic_card_image", patientData.card_image);
                 showCard(patientData.card_image);
-            } else {
-                // まだ画像がない場合はデフォルト or クライアント側で生成
-                showCard("img/診察券.jpg");
             }
             showScreen("screen-card");
         } else {
-            // 2.2 患者が存在しない → 初めて登録画面を表示
+            // 2.2 患者が存在しない → 登録画面へ
             showScreen("screen-register");
         }
     }
 
-    // ▼ 更新ボタン：常に FastAPI から最新を取りに行き、ローカルを更新
+    // ▼（イベント設定エリア）ここから下にイベントを追加する
+
+    // 更新ボタン
     document.getElementById("updateButton").onclick = async () => {
-        try {
-            const data = await fetchPatientInfo(userId);
-            if (!data) {
-                showScreen("screen-register");
-                return;
-            }
-            if (data.card_image) {
-                localStorage.setItem("clinic_card_image", data.card_image);
-                showCard(data.card_image);
-            }
-        } catch (e) {
-            console.error("更新エラー:", e);
+        const data = await fetchPatientInfo(userId);
+        if (!data) {
+            showScreen("screen-register");
+            return;
         }
+        localStorage.setItem("clinic_card_image", data.card_image);
+        showCard(data.card_image);
     };
 
-    // ▼ 診察券変更ボタン：アップロード画面へ
+    // 診察券変更ボタン
     document.getElementById("changeButton").onclick = () => {
         showScreen("screen-upload");
     };
 
-    // ▼ 登録ボタン：新規患者登録（2.2 の後）
+    // ▼▼▼ ここに /register の処理を追加する（この位置が正しい） ▼▼▼
     document.getElementById("registerButton").onclick = async () => {
         const patientId = document.getElementById("patientIdInput").value;
         const name = document.getElementById("nameInput").value;
@@ -77,6 +68,7 @@ async function main() {
             birth_date: birth
         };
 
+        // FastAPI の /register を呼ぶ（登録処理）
         const res = await fetch(`${baseUrl}/register`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -99,7 +91,9 @@ async function main() {
             alert("登録に失敗しました");
         }
     };
+    // ▲▲▲ /register の処理はここに置くのが正しい ▲▲▲
 
+    // アップロード処理
     setupUpload();
 }
 
