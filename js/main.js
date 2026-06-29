@@ -28,7 +28,7 @@ async function main() {
                 showCard(patientData.card_image);
             } else {
                 // まだ画像がない場合はデフォルト or クライアント側で生成
-                showCard("img/default_card.png");
+                showCard("img/診察券.jpg");
             }
             showScreen("screen-card");
         } else {
