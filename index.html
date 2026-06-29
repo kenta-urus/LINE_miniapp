@@ -23,10 +23,22 @@
 	</div>
 	
 	<div id="screen-register" class="screen" style="display:none;">
-	    <input id="nameInput" placeholder="名前">
-	    <input id="birthInput" placeholder="生年月日">
-	    <button id="registerButton">登録</button>
+	    <h2>患者情報の登録</h2>
+	    <div class="form-group">
+	        <label for="patientIdInput">患者ID</label>
+	        <input id="patientIdInput" type="text" placeholder="例：123456">
+	    </div>
+	    <div class="form-group">
+	        <label for="nameInput">名前</label>
+	        <input id="nameInput" type="text" placeholder="例：山田太郎">
+	    </div>
+	    <div class="form-group">
+	        <label for="birthInput">生年月日</label>
+	        <input id="birthInput" type="date">
+	    </div>
+	    <button id="registerButton" class="primary-btn">登録する</button>
 	</div>
+
 	
 	<script src="js/api.js"></script>
 	<script src="js/card.js"></script>
