@@ -327,7 +327,7 @@
 
 						console.log("fetch開始");
 						// 患者情報取得
-						const patUrl = `${CONFIG.BASE_URL}${CONFIG.API.PATIENT}?user_id=${profile.userId}`;
+						const patUrl = `${CONFIG.BASE_URL}${CONFIG.API.PATIENT}?line_user_id=${profile.userId}`;
 						console.log(patUrl);
 						const res = await fetch(patUrl, {method: "GET"});
 						console.log("fetch完了");
