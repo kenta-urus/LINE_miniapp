@@ -209,7 +209,16 @@
 				
 			const LIFF_ID = "2009685891-3LT8yZiY";
 			//const LIFF_ID = "2010080873-1rSYl0PJ";
-				
+
+			const CONFIG = {
+				    BASE_URL: 'https://dog-anymore-surgeons-suse.trycloudflare.com',  // Cloudflare Tunnel 経由
+				    API: {
+				        PATIENT: '/patient',
+				        REGISTER: '/register',
+				        RESERVATION: '/reservation'
+				    }
+			};
+			
 			let patient = {
 				  id: "",
 				  name: "",
@@ -248,8 +257,9 @@
 	
 				console.log(body);
 				console.log("fetch開始");
-				const url = `https://discounted-skip-unlike-obtain.trycloudflare.com/register`;		// Cloudflare Tunnel 経由
-				const res = await fetch(url, {
+				// 新規登録
+				const regUrl = `${CONFIG.BASE_URL}${CONFIG.API.REGISTER}`;
+				const res = await fetch(regUrl, {
 				    method: "POST",
 				    headers: {
 				        "Content-Type": "application/json",
@@ -316,11 +326,10 @@
 					try {
 
 						console.log("fetch開始");
-						//const url = `https://default-armoire-unplanned.ngrok-free.dev/patient?line_user_id=${profile.userId}`;                  ngrok経由
-						const url = `https://discounted-skip-unlike-obtain.trycloudflare.com/patient?line_user_id=${profile.userId}`;      // Cloudflare Tunnel 経由				
-						console.log(url);
-						//const res = await fetch(url);
-						const res = await fetch(url, {method: "GET"});
+						// 患者情報取得
+						const patUrl = `${CONFIG.BASE_URL}${CONFIG.API.PATIENT}?user_id=${profile.userId}`;
+						console.log(patUrl);
+						const res = await fetch(patUrl, {method: "GET"});
 						console.log("fetch完了");
 						console.log(res);
 						
