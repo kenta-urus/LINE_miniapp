@@ -3,39 +3,35 @@
 	<head>
 	    <meta charset="UTF-8">
 	    <title>診察券ミニアプリ</title>
-
-	    <!-- CSS 読み込み -->
+	
 	    <link rel="stylesheet" href="css/style.css">
-
-	    <!-- LIFF SDK -->
 	    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 	</head>
-
+	
 	<body>
-
-		<div id="screen-card" class="screen">
-		    <img id="cardImage" />
-		    <button id="updateButton">更新</button>
-		    <button id="changeButton">診察券を変更する</button>
-		</div>
-
-		<div id="screen-upload" class="screen" style="display:none;">
-		    <input type="file" id="uploadImage" accept="image/*">
-		    <img id="uploadPreview" />
-		    <button id="uploadSaveButton">保存</button>
-		</div>
-
-		<div id="screen-register" class="screen" style="display:none;">
-		    <input id="nameInput" placeholder="名前">
-		    <input id="birthInput" placeholder="生年月日">
-		    <button id="registerButton">登録</button>
-		</div>
-
-		<!-- JS 読み込み -->
-		<script src="js/api.js"></script>
-		<script src="js/card.js"></script>
-		<script src="js/upload.js"></script>
-		<script src="js/main.js"></script>
-
+	
+	<div id="screen-card" class="screen">
+	    <img id="cardImage" />
+	    <button id="updateButton">更新</button>
+	    <button id="changeButton">診察券を変更する</button>
+	</div>
+	
+	<div id="screen-upload" class="screen" style="display:none;">
+	    <input type="file" id="uploadImage" accept="image/*">
+	    <img id="uploadPreview" />
+	    <button id="uploadSaveButton">保存</button>
+	</div>
+	
+	<div id="screen-register" class="screen" style="display:none;">
+	    <input id="nameInput" placeholder="名前">
+	    <input id="birthInput" placeholder="生年月日">
+	    <button id="registerButton">登録</button>
+	</div>
+	
+	<script src="js/api.js"></script>
+	<script src="js/card.js"></script>
+	<script src="js/upload.js"></script>
+	<script src="js/main.js"></script>
+	
 	</body>
 </html>
