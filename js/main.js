@@ -4,7 +4,7 @@ function showScreen(id) {
 }
 
 async function main() {
-    await liff.init({ liffId: "YOUR_LIFF_ID" });
+    await liff.init({ liffId: "2009685891-3LT8yZiY" });
 
     const profile = await liff.getProfile();
     const userId = profile.userId;
