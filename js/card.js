@@ -23,3 +23,9 @@ async function updateCardFromAPI(userId) {
     localStorage.setItem("clinic_card_image", data.card_image);
     showCard(data.card_image);
 }
+
+// ▼▼▼ これを追加する ▼▼▼
+function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(s => s.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
