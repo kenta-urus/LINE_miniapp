@@ -1,4 +1,4 @@
-const baseUrl = "https://else-aluminium-boundaries-achievement.trycloudflare.com";
+const baseUrl = "https://closed-lending-officials-corp.trycloudflare.com";
 
 async function fetchPatientInfo(userId) {
     const url = `${baseUrl}/patient?line_user_id=${userId}`;
