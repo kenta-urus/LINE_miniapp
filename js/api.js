@@ -1,4 +1,4 @@
-const baseUrl = "https://scan-cdt-versus-weight.trycloudflare.com";
+const baseUrl = "https://law-humanity-hunter-farm.trycloudflare.com";
 
 async function fetchPatientInfo(userId) {
     const url = `${baseUrl}/patient?line_user_id=${userId}`;
