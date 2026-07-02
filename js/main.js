@@ -1,6 +1,9 @@
 async function main() {
     await liff.init({ liffId: "2009685891-3LT8yZiY" });
-
+    if (!liff.isLoggedIn()) {
+        liff.login();
+        return; // ログイン後に再読み込みされる
+    }
     const profile = await liff.getProfile();
     const userId = profile.userId;
 
