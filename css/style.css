@@ -14,39 +14,6 @@ body {
 	  display: block;
       margin: 0 auto;
 }
-*/
-/* 位置だけ固定（サイズはJSで） */
-/* 患者ID */
-.patientid {
-  position: absolute;
-  top: 53%;
-  left: 18%;
-  font-weight: bold;
-}
-/* 患者氏名 */
-.name {
-  position: absolute;
-  top: 70%;
-  left: 22%;
-}
-/* 生年月日 */
-.dob {
-  position: absolute;
-  top: 84%;
-  left: 24%;
-}
-/* 性別 */
-.sex {
-  position: absolute;
-  top: 83%;
-  left: 71%;
-}
-/* QR */
-.qr {
-  position: absolute;
-  bottom: 2%;
-  right: 1%;
-}
 
 /* 登録ボタン用CSS */
 /* ボタンエリア */
