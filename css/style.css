@@ -8,7 +8,7 @@ body {
 }
 
 /* カード */
-.card {
+/*.card {
 	  width: 90vw;
 	  max-width: 400px;
 	  aspect-ratio: 1.586;
@@ -21,7 +21,7 @@ body {
 	  margin-top: 20px;
 	  color: black;
 }
-
+*/
 /* 位置だけ固定（サイズはJSで） */
 /* 患者ID */
 .patientid {
