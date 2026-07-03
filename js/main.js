@@ -7,6 +7,24 @@ async function main() {
     const profile = await liff.getProfile();
     const userId = profile.userId;
 
+    // ★ ローカル診察券を一旦無効化（背景画像のテスト用）
+    // localStorage.removeItem("clinic_card_image");
+
+    let patientData = null;
+    try {
+        patientData = await fetchPatientInfo(userId);
+    } catch (e) {
+        console.error("APIエラー:", e);
+    }
+
+    if (patientData && patientData.card_image) {
+        localStorage.setItem("clinic_card_image", patientData.card_image);
+        showCard(patientData.card_image);
+        showScreen("screen-card");
+    } else {
+        showScreen("screen-register");
+    }
+
     // 1. ローカル診察券があるか？
     const hasLocal = loadLocalCard();
 
