@@ -1,5 +1,5 @@
 //  cloudflared URL
-const baseUrl = "https://ruling-remarkable-utilities-relation.trycloudflare.com ";
+const baseUrl = "https://interest-certification-desktops-securities.trycloudflare.com";
 
 async function fetchPatientInfo(userId) {
     const url = `${baseUrl}/patient?line_user_id=${userId}`;
