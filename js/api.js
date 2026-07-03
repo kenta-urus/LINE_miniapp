@@ -1,4 +1,4 @@
-const baseUrl = "https://downloadable-poll-spirits-background.trycloudflare.com/test";
+const baseUrl = "https://ethnic-rss-prizes-close.trycloudflare.com";
 
 async function fetchPatientInfo(userId) {
     const url = `${baseUrl}/patient?line_user_id=${userId}`;
