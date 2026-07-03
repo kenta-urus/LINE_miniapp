@@ -8,7 +8,7 @@ body {
 }
 
 /* カード */
-#cardImage {
+card {
 	  width: 90vw;
 	  max-width: 500px;
 	  display: block;
