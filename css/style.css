@@ -86,7 +86,7 @@ body {
 .menu-item {
     flex: 1;
     text-align: center;
-    font-size: 5vw;            /* ← 画面幅の5%で大きく表示 */
+    font-size: 4vw;            /* ← 画面幅の4%で大きく表示 */
     padding: 20px 0;
     cursor: pointer;
     user-select: none;
