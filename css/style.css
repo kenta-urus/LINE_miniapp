@@ -104,3 +104,63 @@ body {
     margin-top: 40vh;
 }
 
+/**************************************************/
+/* 診察券画像を変更するときのcss設定
+/**************************************************/
+/* アップロード画面タイトル */
+.upload-title {
+    text-align: center;
+    font-size: 6vw;
+    margin-top: 20px;
+}
+
+/* アップロードエリア（縦並び） */
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.preview-image {
+    width: 90vw;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* ボタンを縦並びにしてスマホアプリ風に */
+.upload-buttons {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* 保存・キャンセルボタン（大きくタップしやすく） */
+.upload-btn {
+    text-align: center;
+    font-size: 6vw;
+    padding: 20px 0;
+    border-radius: 10px;
+    background: #4CAF50;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.1s ease;
+}
+
+.upload-btn:active {
+    background: #3e8e41;
+    transform: scale(0.95);
+}
+
+/* キャンセルボタン（色を変える） */
+.upload-btn.cancel {
+    background: #888;
+}
+
+.upload-btn.cancel:active {
+    background: #666;
+}
