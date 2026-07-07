@@ -87,11 +87,14 @@ body {
 .menu-item {
     flex: 1;
     text-align: center;
-    font-size: 5vw;      /* ← 画面幅の5%でフォントサイズを決定 */
-    padding: 20px 0;     /* ← タップ領域を広く */
+    font-size: 6vw;          /* ← 画面幅の6%で大きく表示 */
+    padding: 20px 0;
     cursor: pointer;
     user-select: none;
+    transition: all 0.1s ease;   /* ← タップ時のアニメーション */
 }
+/* タップした瞬間の見た目 */
 .menu-item:active {
-    background: #f0f0f0;
+    background: #e0e0e0;         /* ← 少し暗くなる */
+    transform: scale(0.95);      /* ← 指で押したように縮む */
 }
