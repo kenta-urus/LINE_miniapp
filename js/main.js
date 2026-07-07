@@ -57,7 +57,9 @@ async function main() {
         showScreen("screen-upload");
     };
 
+    //--------------------------------------------------//
     // 登録処理
+    //--------------------------------------------------//
     document.getElementById("registerButton").onclick = async () => {
         const patientId = document.getElementById("patientIdInput").value;
         const name = document.getElementById("nameInput").value;
