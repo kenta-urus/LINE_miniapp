@@ -1,5 +1,5 @@
 function showCard(imageData) {
-    const img = document.getElementById("cardImage");
+    const img = document.getElementById("card");
     img.src = imageData;
 }
 
