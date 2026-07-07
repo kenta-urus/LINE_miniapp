@@ -1,4 +1,4 @@
-function setupUpload() {
+function setupUpload(userId) {
     const uploadInput = document.getElementById("uploadImage");
     const preview = document.getElementById("uploadPreview");
     const saveButton = document.getElementById("uploadSaveButton");
@@ -43,13 +43,8 @@ function setupUpload() {
             if (data.result === "ok") {
                 alert("背景画像を保存しました");
 
-                // 新しい背景画像をローカルにも保存
                 localStorage.setItem("clinic_card_image", base64);
-
-                // カードを更新
                 showCard(base64);
-
-                // カード画面へ戻る
                 showScreen("screen-card");
             } else {
                 alert("保存に失敗しました");
