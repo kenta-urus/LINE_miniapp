@@ -9,7 +9,6 @@ body {
 
 /* カード */
 
-
 /* 登録ボタン用CSS */
 /* ボタンエリア */
 .register-area {
@@ -87,7 +86,7 @@ body {
 .menu-item {
     flex: 1;
     text-align: center;
-    font-size: 6vw;          /* ← 画面幅の6%で大きく表示 */
+    font-size: 5vw;          /* ← 画面幅の5%で大きく表示 */
     padding: 20px 0;
     cursor: pointer;
     user-select: none;
