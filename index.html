@@ -10,6 +10,9 @@
 	
 	<body>
 
+		<!--**************************************** 
+		    診察券表示画面
+		******************************************-->
 		<div id="screen-card" class="screen">
 		    <!-- 診察券画像 -->
 		    <div class="card-container">
@@ -22,8 +25,26 @@
 		    </div>		
 		</div>
 
+		<!--**************************************** 
+		    [更新]ボタンタップ後の待機画面
+		******************************************-->
 		<div id="screen-loading" class="screen" style="display:none;">
     		<div class="loading">更新中...</div>
+		</div>
+
+		<!--**************************************** 
+		    [新作絹を変更]ボタンタップ後の画面
+		******************************************-->
+		<div id="screen-upload" class="screen" style="display:none;">
+		    <h2 class="upload-title">診察券画像の変更</h2>
+			<div class="upload-area">
+		        <input type="file" id="uploadImage" accept="image/*">
+		        <img id="uploadPreview" class="preview-image" />
+	    	</div>
+		    <div class="upload-buttons">
+	    	    <div id="uploadSaveButton" class="upload-btn">保存</div>
+	        	<div id="uploadCancelButton" class="upload-btn cancel">キャンセル</div>
+	    	</div>
 		</div>
 
 		<div id="screen-upload" class="screen" style="display:none;">
