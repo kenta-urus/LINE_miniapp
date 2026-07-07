@@ -40,7 +40,6 @@ async function main() {
             showScreen("screen-register");
             return;
         }
-    };
     
     // 診察券画像を保存
     localStorage.setItem("clinic_card_image", data.card_image);
