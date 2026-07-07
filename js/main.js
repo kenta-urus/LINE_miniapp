@@ -56,6 +56,12 @@ async function main() {
     document.getElementById("changeButton").onclick = () => {
         showScreen("screen-upload");
     };
+    //--------------------------------------------------//
+    // 診察券変更時にキャンセルボタンをタップした時のアクション
+    //--------------------------------------------------//
+    document.getElementById("uploadCancelButton").onclick = () => {
+        showScreen("screen-card");
+    };
 
     //--------------------------------------------------//
     // 登録処理
