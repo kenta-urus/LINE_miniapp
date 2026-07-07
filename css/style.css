@@ -98,3 +98,10 @@ body {
     background: #e0e0e0;         /* ← 少し暗くなる */
     transform: scale(0.95);      /* ← 指で押したように縮む */
 }
+/* 更新ボタンタップ後の画面更新 */
+.loading {
+    font-size: 6vw;
+    text-align: center;
+    margin-top: 40vh;
+}
+
