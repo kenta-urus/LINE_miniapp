@@ -61,50 +61,42 @@ body {
 }
 
 /* 下固定メニュースタイル */
-/* 診察券画像を中央に */
+/* 診察券画像を大きく中央に表示 */
 .card-container {
     text-align: center;
     margin-top: 20px;
 }
-
 #card {
-	width: 90vw;
-	max-width: 500px;
-	display: block;
-    margin: 0 auto;
+    width: 90%;              /* ← 横幅90% */
+    max-width: 500px;        /* ← 大きすぎ防止（任意） */
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
-
-/* 下部固定メニュー */
+/* 下部固定メニュー（あなたの指定どおり） */
 .bottom-menu {
-	  position: fixed;
-	  bottom: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 60px;
-	  background: #ffffff;
-	  border-top: 1px solid #ccc;
-	  display: flex;
-	  justify-content: space-around;
-	  align-items: center;
-	  z-index: 9999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #ffffff;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 9999;
 }
-
-/* メニュー内のボタン */
-.bottom-menu button {
+/* メニュー項目（ボタンではなくタップ領域） */
+.menu-item {
     flex: 1;
-    margin: 0 10px;
-    padding: 12px 0;
+    text-align: center;
     font-size: 16px;
-    border-radius: 8px;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
+    padding: 10px 0;
+    cursor: pointer;
+    user-select: none;
 }
-
-.bottom-menu button:nth-child(2) {
-    background-color: #2196F3;
+.menu-item:active {
+    background: #f0f0f0;
 }
 
 /******************************/
