@@ -32,15 +32,28 @@ async function main() {
 
     // 更新ボタン
     document.getElementById("updateButton").onclick = async () => {
+    
+        // ローディング画面を表示
+        showScreen("screen-loading");
         const data = await fetchPatientInfo(userId);
         if (!data) {
             showScreen("screen-register");
             return;
         }
-        localStorage.setItem("clinic_card_image", data.card_image);
-        showCard(data.card_image);
     };
+    
+    // 診察券画像を保存
+    localStorage.setItem("clinic_card_image", data.card_image);
 
+    // 診察券画像を更新（フェードアニメ対応）
+    showCard(data.card_image);
+
+    // 更新後にカード画面へ戻す
+    showScreen("screen-card");
+};
+
+
+    
     // 診察券変更ボタン
     document.getElementById("changeButton").onclick = () => {
         showScreen("screen-upload");
