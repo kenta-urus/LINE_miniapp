@@ -28,9 +28,8 @@ function setupUpload(userId) {
             // FastAPI に送る payload
             const payload = {
                 line_user_id: userId,
-                image_base64: base64
+                image_base64: encodeURIComponent(base64)
             };
-
             // FastAPI の保存 API を呼ぶ
             const res = await fetch(`${baseUrl}/upload_background`, {
                 method: "POST",
