@@ -1,6 +1,6 @@
 //  cloudflared URL
-const baseUrl = "https://gain-idaho-career-winner.trycloudflare.com";
-//const baseUrl = "http://localhost:8000";
+//const baseUrl = "https://gain-idaho-career-winner.trycloudflare.com";
+const baseUrl = "http://localhost:8000";
 
 async function fetchPatientInfo(userId) {
     const url = `${baseUrl}/patient?line_user_id=${userId}`;
