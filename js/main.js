@@ -105,7 +105,7 @@ async function main() {
         }
     };
 
-    setupUpload();
+    setupUpload(userId);
 }
 
 main();
