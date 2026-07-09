@@ -1,5 +1,5 @@
 function showCard(base64FromServer = null) {
-    const img = document.getElementById("clinicCardImage");
+    const img = document.getElementById("card");
 
     // ① ローカル保存された画像があればそれを優先
     const localImage = localStorage.getItem("clinic_card_image");
