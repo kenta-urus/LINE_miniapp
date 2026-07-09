@@ -39,15 +39,16 @@ function setupUpload(userId) {
 
             const data = await res.json();
 
-            if (data.result === "ok") {
-                alert("背景画像を保存しました");
-
+            // FastAPIからのリターン情報
+            if (data.status === "success") {
+                alert("背景画像を保存しました");            
                 localStorage.setItem("clinic_card_image", base64);
                 showCard(base64);
                 showScreen("screen-card");
             } else {
                 alert("保存に失敗しました");
             }
+
         };
 
         reader.readAsDataURL(file);
