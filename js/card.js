@@ -1,6 +1,21 @@
-function showCard(imageData) {
-    const img = document.getElementById("card");
-    img.src = imageData;
+function showCard(base64FromServer = null) {
+    const img = document.getElementById("clinicCardImage");
+
+    // ① ローカル保存された画像があればそれを優先
+    const localImage = localStorage.getItem("clinic_card_image");
+    if (localImage) {
+        img.src = localImage;
+        return;
+    }
+
+    // ② ローカルが無ければ FastAPI から取得した画像を使う
+    if (base64FromServer) {
+        img.src = base64FromServer;
+        return;
+    }
+
+    // ③ どちらも無ければデフォルト画像
+    img.src = "default_card.png";
 }
 
 function loadLocalCard() {
