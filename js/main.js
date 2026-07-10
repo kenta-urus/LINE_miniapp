@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         
             // ③ FastAPI の診察券画像をローカルに保存
             localStorage.setItem("clinic_card_image", data.card_image);
-            console.log("FastAPIから取得した診察券画像をローカルに保存:", data.card_image);
+            console.log("FastAPIから取得した診察券画像をローカルに保存しました。");
         
             // ④ 保存したローカル画像を表示（仕様どおり）
             const localImage = localStorage.getItem("clinic_card_image");
