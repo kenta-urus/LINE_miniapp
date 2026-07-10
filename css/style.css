@@ -63,7 +63,7 @@ body {
 
 #card {
 	width: 90vw;
-	max-width: none;
+	max-width: 600;
 	display: block;
     margin: 0 auto;
 }
