@@ -53,21 +53,33 @@ async function main() {
     // 更新ボタン タップした時のアクション
     //--------------------------------------------------//
     document.getElementById("updateButton").onclick = async () => {
+
+        // ① ローカルの診察券画像を消去
+        localStorage.removeItem("clinic_card_image");
+        console.log("ローカル診察券画像を削除しました");
     
         // ローディング画面を表示
         showScreen("screen-loading");
+    
+        // ② FastAPI に問い合わせて診察券イメージを再作成
         const data = await fetchPatientInfo(userId);
         if (!data) {
             showScreen("screen-register");
             return;
         }
-        // 診察券画像を保存
+    
+        // ③ FastAPI の診察券画像をローカルに保存
         localStorage.setItem("clinic_card_image", data.card_image);
-        // 診察券画像を更新（フェードアニメ対応）
-        showCard(data.card_image);
-        // 更新後にカード画面へ戻す
+        console.log("FastAPIから取得した診察券画像をローカルに保存:", data.card_image);
+    
+        // ④ 保存したローカル画像を表示（仕様どおり）
+        const localImage = localStorage.getItem("clinic_card_image");
+        showCard(localImage);
+    
+        // カード画面へ戻す
         showScreen("screen-card");
     };
+
     //--------------------------------------------------//
     // 診察券変更ボタン タップした時のアクション
     //--------------------------------------------------//
