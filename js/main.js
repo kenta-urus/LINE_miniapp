@@ -145,6 +145,36 @@ async function main() {
     setupUpload(userId);
 }
 document.addEventListener("DOMContentLoaded", () => {
-    main();
-    console.log("deleteButton:", document.getElementById("deleteButton"));
+    await main();  // ← LIFF 初期化 → DOM 再構築 → 画面表示
+
+    // ★ ここでイベントを登録する（最重要）
+    const updateBtn = document.getElementById("updateButton");
+    const deleteBtn = document.getElementById("deleteButton");
+    const changeBtn = document.getElementById("changeButton");
+
+    console.log("updateButton:", updateBtn);
+    console.log("deleteButton:", deleteBtn);
+    console.log("changeButton:", changeBtn);
+
+    if (updateBtn) {
+        updateBtn.onclick = async () => {
+            console.log("更新ボタンが押されました");
+            await handleUpdate(userId);
+        };
+    }
+
+    if (deleteBtn) {
+        deleteBtn.onclick = () => {
+            console.log("削除ボタンが押されました");
+            localStorage.removeItem("clinic_card_image");
+            alert("ローカルの診察券画像を消去しました");
+        };
+    }
+
+    if (changeBtn) {
+        changeBtn.onclick = () => {
+            console.log("画像変更ボタンが押されました");
+            showScreen("screen-upload");
+        };
+    }
 });
