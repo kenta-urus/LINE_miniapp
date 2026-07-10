@@ -145,6 +145,7 @@ async function main() {
     setupUpload(userId);
 }
 document.addEventListener("DOMContentLoaded", () => {
+    
     await main();  // ← LIFF 初期化 → DOM 再構築 → 画面表示
 
     // ★ ここでイベントを登録する（最重要）
