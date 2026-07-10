@@ -163,8 +163,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (updateBtn) {
         updateBtn.onclick = async () => {
             console.log("更新ボタンが押されました");
-            await handleUpdate(userId);
-
             // ① ローカルの診察券画像を消去
             localStorage.removeItem("clinic_card_image");
             console.log("ローカル診察券画像を削除しました");
