@@ -157,14 +157,44 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("deleteButton:", deleteBtn);
     console.log("changeButton:", changeBtn);
 
-    /*
+    //--------------------------------------------------
+    // 更新ボタンクリックイベント
+    //--------------------------------------------------
     if (updateBtn) {
         updateBtn.onclick = async () => {
             console.log("更新ボタンが押されました");
             await handleUpdate(userId);
+
+            // ① ローカルの診察券画像を消去
+            localStorage.removeItem("clinic_card_image");
+            console.log("ローカル診察券画像を削除しました");
+        
+            // ローディング画面を表示
+            showScreen("screen-loading");
+        
+            // ② FastAPI に問い合わせて診察券イメージを再作成
+            const data = await fetchPatientInfo(userId);
+            if (!data) {
+                showScreen("screen-register");
+                return;
+            }
+        
+            // ③ FastAPI の診察券画像をローカルに保存
+            localStorage.setItem("clinic_card_image", data.card_image);
+            console.log("FastAPIから取得した診察券画像をローカルに保存:", data.card_image);
+        
+            // ④ 保存したローカル画像を表示（仕様どおり）
+            const localImage = localStorage.getItem("clinic_card_image");
+            showCard(localImage);
+        
+            // カード画面へ戻す
+            showScreen("screen-card");
         };
     }
-
+    
+    //--------------------------------------------------
+    // 削除ボタンクリックイベント
+    //--------------------------------------------------
     if (deleteBtn) {
         deleteBtn.onclick = () => {
             console.log("削除ボタンが押されました");
@@ -173,11 +203,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         };
     }
 
+    //--------------------------------------------------
+    // 画像の変更ボタンクリックイベント
+    //--------------------------------------------------
     if (changeBtn) {
         changeBtn.onclick = () => {
             console.log("画像変更ボタンが押されました");
             showScreen("screen-upload");
         };
     }
-    */
+    
 });
