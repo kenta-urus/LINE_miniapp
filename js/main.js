@@ -15,6 +15,11 @@ async function main() {
     // ① ローカル診察券画像を最優先
     const localImage = localStorage.getItem("clinic_card_image");
     if (localImage) {
+        
+        console.log("ローカルに診察券がありました。");
+        const localImage = localStorage.getItem("clinic_card_image");
+        console.log("ローカル診察券画像:", localImage);
+
         // ローカル画像がある → FastAPI に行かずに表示
         showCard(localImage);
         showScreen("screen-card");
@@ -22,6 +27,7 @@ async function main() {
     }
 
     // ② ローカル画像が無い → FastAPI に問い合わせる
+    console.log("FastAPIから診察券を取得します。");
     let patientData = null;
     try {
         patientData = await fetchPatientInfo(userId);
