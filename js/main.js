@@ -20,8 +20,11 @@ async function main() {
         console.error("APIエラー:", e);
     }
 
-    if (patientData && patientData.card_image) {
-        localStorage.setItem("clinic_card_image", patientData.card_image);
+    const localImage = localStorage.getItem("clinic_card_image");
+    if (localImage) {
+        showCard(localImage);
+        showScreen("screen-card");
+    } else if (patientData && patientData.card_image) {
         showCard(patientData.card_image);
         showScreen("screen-card");
     } else {
@@ -107,5 +110,6 @@ async function main() {
 
     setupUpload(userId);
 }
-
-main();
+document.addEventListener("DOMContentLoaded", () => {
+    main();
+});
