@@ -59,6 +59,8 @@ body {
 .card-container {
     text-align: center;
     margin-top: 20px;
+	position: relative;   /* ★追加 */
+    z-index: 1;           /* ★追加 */
 }
 
 #card {
@@ -80,7 +82,8 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    z-index: 9999;
+    z-index: 99999;       /* ★強化（9999 → 99999） */
+    pointer-events: auto; /* ★念のため追加 */
 }
 /* メニュー項目（ボタンではなくタップ領域） */
 .menu-item {
