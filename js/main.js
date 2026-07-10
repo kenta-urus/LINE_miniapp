@@ -1,3 +1,4 @@
+let userId = null;   // ★ グローバルに宣言
 async function main() {
     //##################################################
     // 診察券メイン処理
@@ -10,7 +11,7 @@ async function main() {
     }
 
     const profile = await liff.getProfile();
-    const userId = profile.userId;
+    userId = profile.userId;    // グローバル変数に代入
 
     // ① ローカル診察券画像を最優先
     const localImage = localStorage.getItem("clinic_card_image");
