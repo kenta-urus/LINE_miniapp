@@ -1,4 +1,7 @@
 async function main() {
+    //##################################################
+    // 診察券メイン処理
+    //##################################################
     await liff.init({ liffId: "2009685891-3LT8yZiY" });
 
     if (!liff.isLoggedIn()) {
@@ -8,11 +11,17 @@ async function main() {
 
     const profile = await liff.getProfile();
     const userId = profile.userId;
-    
-    // ★ ローカル診察券を一旦無効化（背景画像のテスト用）
-    // localStorage.removeItem("clinic_card_image");
 
-    // FastAPI から診察券情報を取得
+    // ① ローカル診察券画像を最優先
+    const localImage = localStorage.getItem("clinic_card_image");
+    if (localImage) {
+        // ローカル画像がある → FastAPI に行かずに表示
+        showCard(localImage);
+        showScreen("screen-card");
+        return;
+    }
+
+    // ② ローカル画像が無い → FastAPI に問い合わせる
     let patientData = null;
     try {
         patientData = await fetchPatientInfo(userId);
@@ -20,14 +29,14 @@ async function main() {
         console.error("APIエラー:", e);
     }
 
-    const localImage = localStorage.getItem("clinic_card_image");
-    if (localImage) {
-        showCard(localImage);
-        showScreen("screen-card");
-    } else if (patientData && patientData.card_image) {
+    if (patientData && patientData.card_image) {
+        // FastAPI の診察券画像をローカルに保存
+        localStorage.setItem("clinic_card_image", patientData.card_image);
+        // 表示
         showCard(patientData.card_image);
         showScreen("screen-card");
     } else {
+        // 登録情報が無い
         showScreen("screen-register");
     }
 
