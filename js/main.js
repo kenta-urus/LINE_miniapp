@@ -17,8 +17,6 @@ async function main() {
     if (localImage) {
         
         console.log("ローカルに診察券がありました。");
-        const localImage = localStorage.getItem("clinic_card_image");
-        console.log("ローカル診察券画像:", localImage);
 
         // ローカル画像がある → FastAPI に行かずに表示
         showCard(localImage);
