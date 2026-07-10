@@ -157,6 +157,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("deleteButton:", deleteBtn);
     console.log("changeButton:", changeBtn);
 
+    /*
     if (updateBtn) {
         updateBtn.onclick = async () => {
             console.log("更新ボタンが押されました");
@@ -178,4 +179,5 @@ document.addEventListener("DOMContentLoaded", async () => {
             showScreen("screen-upload");
         };
     }
+    */
 });
