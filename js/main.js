@@ -144,7 +144,7 @@ async function main() {
 
     setupUpload(userId);
 }
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     
     await main();  // ← LIFF 初期化 → DOM 再構築 → 画面表示
 
