@@ -146,4 +146,5 @@ async function main() {
 }
 document.addEventListener("DOMContentLoaded", () => {
     main();
+    console.log("deleteButton:", document.getElementById("deleteButton"));
 });
