@@ -76,11 +76,13 @@ body {
     height: 80px;            /* ← 高さを大きくしてタップしやすく */
     background: #ffffff;
     border-top: 1px solid #ccc;
-    display: flex;
+    /* display: flex; */
     justify-content: space-around;
     align-items: center;
     z-index: 99999;       /* ★強化（9999 → 99999） */
     pointer-events: auto; /* ★念のため追加 */
+	display: grid;
+    grid-template-columns: repeat(4, 1fr); /* ← 4項目に対応 */
 }
 /* メニュー項目（ボタンではなくタップ領域） */
 .menu-item {
