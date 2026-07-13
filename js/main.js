@@ -149,7 +149,7 @@ async function main() {
 //--------------------------------------------------
 // 画像削除ボタンクリックイベント
 //--------------------------------------------------
-const deleteImageBtn = document.getElementById("deleteImageButton");
+const deleteImageBtn = document.getElementById("delimgButton");
 if (deleteImageBtn) {
     deleteImageBtn.onclick = async () => {
         console.log("画像削除ボタンが押されました");
