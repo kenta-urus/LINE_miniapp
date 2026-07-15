@@ -146,32 +146,7 @@ async function main() {
     setupUpload(userId);
 }
 
-//--------------------------------------------------
-// 画像削除ボタンクリックイベント
-//--------------------------------------------------
-const deleteImageBtn = document.getElementById("delimgButton");
-if (deleteImageBtn) {
-    deleteImageBtn.onclick = async () => {
-        console.log("画像削除ボタンが押されました");
-        // ① ローカル画像削除
-        localStorage.removeItem("clinic_card_image");
-        console.log("ローカル診察券画像を削除しました");
-        // ② FastAPI 側の画像削除APIを呼ぶ
-        try {
-            const res = await fetch(`${API_BASE_URL}/delete_card_image?userId=${userId}`, {
-                method: "DELETE"
-            });
-            const result = await res.json();
-            console.log("FastAPI側の画像削除結果:", result);
-        } catch (err) {
-            console.error("FastAPI画像削除APIエラー:", err);
-        }
-        // ③ デフォルト画像を表示
-        showCard(null);  // showCard 内で default_card.png を使う仕様
-        // ④ カード画面へ戻す
-        showScreen("screen-card");
-    };
-}
+
 
 //##################################################//
 // main処理
@@ -244,3 +219,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     
 });
+
+//--------------------------------------------------
+// 画像削除ボタンクリックイベント
+//--------------------------------------------------
+const deleteImageBtn = document.getElementById("delimgButton");
+if (deleteImageBtn) {
+    deleteImageBtn.onclick = async () => {
+        console.log("画像削除ボタンが押されました");
+        // ① ローカル画像削除
+        localStorage.removeItem("clinic_card_image");
+        console.log("ローカル診察券画像を削除しました");
+        // ② FastAPI 側の画像削除APIを呼ぶ
+        try {
+            const res = await fetch(`${API_BASE_URL}/delete_card_image?userId=${userId}`, {
+                method: "DELETE"
+            });
+            const result = await res.json();
+            console.log("FastAPI側の画像削除結果:", result);
+        } catch (err) {
+            console.error("FastAPI画像削除APIエラー:", err);
+        }
+        // ③ デフォルト画像を表示
+        showCard(null);  // showCard 内で default_card.png を使う仕様
+        // ④ カード画面へ戻す
+        showScreen("screen-card");
+    };
+}
