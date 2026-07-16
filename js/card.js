@@ -19,7 +19,7 @@ function showCard(base64FromServer = null) {
     }
 
     // ③ どちらも無ければデフォルト画像
-   fetch(`${baseUrl}/patient?userId=${userId}`)
+   fetch(`${baseUrl}/patient?line_user_id=${userId}`)
         .then(res => res.json())
         .then(data => {
             img.src = data.card_image;
