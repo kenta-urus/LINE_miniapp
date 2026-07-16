@@ -240,8 +240,18 @@ if (deleteImageBtn) {
         } catch (err) {
             console.error("FastAPI画像削除APIエラー:", err);
         }
-        // ③ デフォルト画像を表示
-        showCard(null);  // showCard 内で default_card.png を使う仕様
+
+        // ③ FastAPI からデフォルト画像を取得する
+        let defaultImage = null;
+        try {
+            const res = await fetch(`${baseUrl}/patient?userId=${userId}`);
+            const data = await res.json();
+            defaultImage = data.card_image;   // base64 が返ってくる想定
+        } catch (err) {
+            console.error("FastAPIデフォルト画像取得エラー:", err);
+        }
+        // ④ showCard に FastAPI のデフォルト画像を渡す
+        showCard(defaultImage);
         // ④ カード画面へ戻す
         showScreen("screen-card");
     };
