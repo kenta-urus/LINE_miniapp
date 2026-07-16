@@ -238,7 +238,7 @@ if (deleteImageBtn) {
         console.log("FastAPI側の画像削除結果:", result);
 
         // ③ 削除後の診察券画像を /patient から再取得する
-        const patientRes = await fetch(`${baseUrl}/patient?userId=${userId}`);
+        const patientRes = await fetch(`${baseUrl}/patient?line_user_id=${userId}`);
         const patientData = await patientRes.json();
 
         // ④ 診察券画像をローカル保存
