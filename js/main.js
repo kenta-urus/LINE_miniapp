@@ -232,7 +232,7 @@ if (deleteImageBtn) {
         console.log("ローカル診察券画像を削除しました");
         // ② FastAPI 側の画像削除APIを呼ぶ
         try {
-            const res = await fetch(`${API_BASE_URL}/delete_card_image?userId=${userId}`, {
+            const res = await fetch(`${baseUrl}/delete_card_image?userId=${userId}`, {
                 method: "DELETE"
             });
             const result = await res.json();
