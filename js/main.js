@@ -226,32 +226,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 const deleteImageBtn = document.getElementById("delimgButton");
 if (deleteImageBtn) {
     deleteImageBtn.onclick = async () => {
+        
         console.log("画像削除ボタンが押されました");
         // ① ローカル画像削除
         localStorage.removeItem("clinic_card_image");
-        console.log("ローカル診察券画像を削除しました");
         // ② FastAPI 側の画像削除APIを呼ぶ
-        try {
-            const res = await fetch(`${baseUrl}/delete_card_image?userId=${userId}`, {
-                method: "DELETE"
-            });
-            const result = await res.json();
-            console.log("FastAPI側の画像削除結果:", result);
-        } catch (err) {
-            console.error("FastAPI画像削除APIエラー:", err);
-        }
+        const res = await fetch(`${baseUrl}/delete_card_image?userId=${userId}`, {
+            method: "DELETE"
+        });
+        const result = await res.json();
+        console.log("FastAPI側の画像削除結果:", result);
 
-        // ③ FastAPI からデフォルト画像を取得する
-        let defaultImage = null;
-        try {
-            const res = await fetch(`${baseUrl}/patient?userId=${userId}`);
-            const data = await res.json();
-            defaultImage = data.card_image;   // base64 が返ってくる想定
-        } catch (err) {
-            console.error("FastAPIデフォルト画像取得エラー:", err);
-        }
+        // ③ 削除後の診察券画像を /patient から再取得する
+        const patientRes = await fetch(`${baseUrl}/patient?userId=${userId}`);
+        const patientData = await patientRes.json();
+
+        // ④ 診察券画像をローカル保存
+        localStorage.setItem("clinic_card_image", patientData.card_image);
         // ④ showCard に FastAPI のデフォルト画像を渡す
-        showCard(defaultImage);
+        showCard(patientData.card_image);
         // ④ カード画面へ戻す
         showScreen("screen-card");
     };
