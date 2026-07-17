@@ -1,3 +1,6 @@
+//##################################################//
+// カードイメージ変更登録（Upload）
+//##################################################//
 function setupUpload(userId) {
     const uploadInput = document.getElementById("uploadImage");
     const preview = document.getElementById("uploadPreview");
