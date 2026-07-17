@@ -1,6 +1,12 @@
+//##################################################
 // upload.js（アップロード専用）
-import { baseUrl } from "./config.js";
+//##################################################
 
+// インポート
+import { baseUrl } from "./config.js";
+import { showCard, showScreen } from "./card.js";
+
+// 処理ロジック
 export function handleUploadPreview() {
     const uploadInput = document.getElementById("uploadImage");
     const preview = document.getElementById("uploadPreview");
