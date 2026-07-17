@@ -1,4 +1,5 @@
 // upload.js（アップロード専用）
+import { baseUrl } from "./config.js";
 
 export function handleUploadPreview() {
     const uploadInput = document.getElementById("uploadImage");
