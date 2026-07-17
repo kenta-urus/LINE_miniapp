@@ -1,6 +1,8 @@
 //##################################################
 // api.js（FastAPI 呼び出し専用）
 //##################################################
+import { baseUrl } from "./config.js";
+
 export async function fetchPatientInfo(userId) {
     const url = `${baseUrl}/patient?line_user_id=${userId}`;
     const res = await fetch(url);
