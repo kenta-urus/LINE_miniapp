@@ -1,6 +1,10 @@
 // ===============================
 // グローバル
 // ===============================
+import { fetchPatientInfo, handleUpdate, handleDeleteLocal, handleDeleteImage, handleRegister } from "./api.js";
+import { showCard, loadLocalCard, showScreen } from "./card.js";
+import { handleUploadPreview, uploadBackground } from "./upload.js";
+
 let userId = null;
 const baseUrl = "http://localhost:8000";   // ← FastAPI の URL をここに統一
 
