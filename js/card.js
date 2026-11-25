@@ -15,7 +15,7 @@ export function showCard(base64FromServer = null) {
     }
 
     //img.src = "default_card.png"; // 最終手段
-    img.src = ".\img\診察券.png"; // 最終手段
+    img.src = "./img/診察券.png"; // 最終手段
 }
 
 export function loadLocalCard() {
